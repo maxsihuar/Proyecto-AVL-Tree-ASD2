@@ -72,18 +72,18 @@ namespace Clases
             }
         }
 
-        private cNodoAVL _Insertar(cNodoAVL nodo, Object dato)
+        private cNodoAVL _Insertar(cNodoAVL nodo, cObjeto dato)
         {
             if (nodo == null)
             {
                 return new cNodoAVL(dato);
             }
 
-            if (((dynamic)dato).Id < ((dynamic)nodo.dato).Id)
+            if (dato.Id < nodo.dato.Id)
             {
                 nodo.hijoIzquierdo = _Insertar(nodo.hijoIzquierdo, dato);
             }
-            else if (((dynamic)dato).Id > ((dynamic)nodo.dato).Id())
+            else if (dato.Id > nodo.dato.Id)
             {
                 nodo.hijoDerecho = _Insertar(nodo.hijoDerecho, dato);
             }
@@ -113,11 +113,11 @@ namespace Clases
                 return null;
             }
 
-            if (id < ((dynamic)nodo.dato).Id)
+            if (id < nodo.dato.Id)
             {
                 nodo.hijoIzquierdo = this._Eliminar(nodo.hijoIzquierdo, id);
             }
-            else if (id > ((dynamic)nodo.dato).Id)
+            else if (id > nodo.dato.Id)
             {
                 nodo.hijoDerecho = this._Eliminar(nodo.hijoDerecho, id);
             }
@@ -134,7 +134,7 @@ namespace Clases
 
                 cNodoAVL succesor = this.Minimo(nodo.hijoDerecho);
                 nodo.dato = succesor.dato;
-                nodo.hijoDerecho = this._Eliminar(nodo.hijoDerecho, ((dynamic)succesor.dato).Id);
+                nodo.hijoDerecho = this._Eliminar(nodo.hijoDerecho, succesor.dato.Id);
             }
             this.ActualizarAltura(nodo);
             return this.Balancear(nodo);
@@ -143,20 +143,41 @@ namespace Clases
 
         private bool _Buscar(cNodoAVL nodo, int id)
         {
-            if(((dynamic)nodo.dato).Id == id)
+            if (nodo == null) return false;
+
+            if (nodo.dato.Comparar(id))
             {
                 return true;
             }
-            else if(((dynamic)nodo.dato).Id > id)
+            else if (nodo.dato.Id > id)
             {
-                nodo = nodo.hijoIzquierdo;
+                _Buscar(nodo.hijoIzquierdo, id);
             }
             else
             {
-                nodo = nodo.hijoDerecho;
+                _Buscar(nodo.hijoDerecho, id);
             }
 
             return false;
+        }
+
+        private void _Modificar(cNodoAVL nodo, int id, Object dato)
+        {
+            if (nodo == null) return;
+
+            if (nodo.dato.Comparar(id))
+            {
+                nodo.dato = dato;
+                return;
+            }
+            else if (nodo.dato.Id > id)
+            {
+                _Modificar(nodo.hijoIzquierdo, id, dato);
+            }
+            else
+            {
+                _Modificar(nodo.hijoDerecho, id, dato);
+            }
         }
 
         #endregion
@@ -173,6 +194,11 @@ namespace Clases
         public bool Buscar(int id)
         {
             return _Buscar(raiz, id);
+        }
+
+        public void Modificar(int id, cObjeto dato)
+        {
+            _Modificar(raiz, id, dato);
         }
     }
 }

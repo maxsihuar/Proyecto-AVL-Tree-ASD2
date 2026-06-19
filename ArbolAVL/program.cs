@@ -29,7 +29,7 @@ void MenuLibros(Object Libros)
             case 1:
                 cLibro Libro = new cLibro();
                 Libro.PedirLibro();
-                Libros._Insertar(Libro);
+                Libros.Insertar(Libro);
                 Console.WriteLine("Libro agregado exitosamente.");
                 break;
             case 2:

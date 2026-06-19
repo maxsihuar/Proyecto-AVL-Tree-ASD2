@@ -13,7 +13,7 @@ namespace Clases
         public cNodoAVL hijoDerecho;
         public int altura;
 
-        public cNodoAVL(Object Dato)
+        public cNodoAVL(cObjeto Dato)
         {
             dato = Dato;
             altura = 1;
