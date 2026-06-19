@@ -7,7 +7,7 @@ using Clases;
 
 namespace Clases
 {
-    class cArbolAVL
+    public class cArbolAVL
     {
         private cNodoAVL raiz;
 
