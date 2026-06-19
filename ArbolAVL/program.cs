@@ -138,13 +138,13 @@ void Menu()
         switch (opcion)
         {
             case 1:
-                MenuLibros(new Object());
+                //MenuLibros(new Object());
                 break;
             case 2:
-                MenuLectores(new Object());
+                //MenuLectores(new Object());
                 break;
             case 3:
-                MenuPrestamos(new Object());
+                //MenuPrestamos(new Object());
                 break;
             case 4:
                 Console.WriteLine("Saliendo del programa...");
@@ -171,6 +171,7 @@ namespace ArbolAVL
             cArbolAVL Libros = datos.arbolLibros;
             cArbolAVL Lectores = datos.arbolLectores;
             cArbolAVL Prestamos = datos.arbolPrestamos;
+            Console.WriteLine(Libros.Buscar("L001"));
         }
     }
 }

@@ -36,7 +36,7 @@ namespace ArbolAVL
             }
             else
             {
-                Console.WriteLine(resultado.Item1);
+                Console.WriteLine("103");
             }
         }
     }
