@@ -11,13 +11,11 @@ namespace ArbolAVL
 {
     public class test
     {
+        public cArbolAVL arbolLibros = new cArbolAVL();
+        public cArbolAVL arbolLectores = new cArbolAVL();
+        public cArbolAVL arbolPrestamos = new cArbolAVL();
         public void CargarDatos()
-        {
-            //ARBOLES AVL
-            cArbolAVL arbolLibros = new cArbolAVL();
-            cArbolAVL arbolLectores = new cArbolAVL();
-            cArbolAVL arbolPrestamos = new cArbolAVL();
-
+        {  
             //Libros
             cLibro libro1 = new cLibro { Id = "L001", Titulo = "C#", Autor = "Juan Pérez", Anio = "2020", Especialidad = "Programación" };
             cLibro libro2 = new cLibro { Id = "L002", Titulo = "Java", Autor = "Ana López", Anio = "2019", Especialidad = "Software" };

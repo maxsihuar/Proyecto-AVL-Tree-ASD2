@@ -17,7 +17,7 @@ void MenuOS(string titulo)
     Console.WriteLine("Seleccione una opción: ");
 
 }
-void MenuLibros(Object Libros)
+void MenuLibros(cArbolAVL Libros)
 {
     int opcion_;
     do
@@ -28,7 +28,7 @@ void MenuLibros(Object Libros)
         {
             case 1:
                 cLibro Libro = new cLibro();
-                Libro.PedirLibro();
+                Libro.Pedir();
                 Libros.Insertar(Libro);
                 Console.WriteLine("Libro agregado exitosamente.");
                 break;
@@ -51,7 +51,7 @@ void MenuLibros(Object Libros)
     }
     while (opcion_ != 6);
 }
-void MenuLectores(Object Lectores)
+void MenuLectores(cArbolAVL Lectores)
 {
     int opcion_;
     do
@@ -62,8 +62,8 @@ void MenuLectores(Object Lectores)
         {
             case 1:
                 cLector Lector = new cLector();
-                Lector.PedirLector();
-                Lectores._Insertar(Lector);
+                Lector.Pedir();
+                Lectores.Insertar(Lector);
                 Console.WriteLine("Lector agregado exitosamente.");
                 break;
             case 2:
@@ -85,7 +85,7 @@ void MenuLectores(Object Lectores)
     }
     while (opcion_ != 6);
 }
-void MenuPrestamos(Object Prestamos)
+void MenuPrestamos(cArbolAVL Prestamos)
 {
     int opcion_;
     do
@@ -96,8 +96,8 @@ void MenuPrestamos(Object Prestamos)
         {
             case 1:
                 cPrestamo Prestamo = new cPrestamo();
-                Prestamo.PedirPrestamo();
-                Prestamos._Insertar(Prestamo);
+                Prestamo.Pedir();
+                Prestamos.Insertar(Prestamo);
                 Console.WriteLine("Prestamo agregado exitosamente.");
                 break;
             case 2:
@@ -164,6 +164,13 @@ namespace ArbolAVL
        
     class program
     {
- 
+        static void Main(string[] args)
+        {
+            test datos = new test();
+            datos.CargarDatos();
+            cArbolAVL Libros = datos.arbolLibros;
+            cArbolAVL Lectores = datos.arbolLectores;
+            cArbolAVL Prestamos = datos.arbolPrestamos;
+        }
     }
 }
