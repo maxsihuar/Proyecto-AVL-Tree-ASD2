@@ -8,7 +8,7 @@ namespace Clases
 {
     internal class cNodoAVL
     {
-        public Object dato;
+        public cObjeto dato;
         public cNodoAVL hijoIzquierdo;
         public cNodoAVL hijoDerecho;
         public int altura;

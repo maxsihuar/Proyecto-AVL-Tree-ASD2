@@ -79,11 +79,11 @@ namespace Clases
                 return new cNodoAVL(dato);
             }
 
-            if (dato.Id < nodo.dato.Id)
+            if (dato.Id.GetHashCode() < nodo.dato.Id.GetHashCode())
             {
                 nodo.hijoIzquierdo = _Insertar(nodo.hijoIzquierdo, dato);
             }
-            else if (dato.Id > nodo.dato.Id)
+            else if (dato.Id.GetHashCode() > nodo.dato.Id.GetHashCode())
             {
                 nodo.hijoDerecho = _Insertar(nodo.hijoDerecho, dato);
             }
@@ -106,18 +106,18 @@ namespace Clases
         }
 
 
-        private cNodoAVL _Eliminar(cNodoAVL nodo, int id)
+        private cNodoAVL _Eliminar(cNodoAVL nodo, string id)
         {
             if (nodo == null)
             {
                 return null;
             }
 
-            if (id < nodo.dato.Id)
+            if (id.GetHashCode() < nodo.dato.Id.GetHashCode())
             {
                 nodo.hijoIzquierdo = this._Eliminar(nodo.hijoIzquierdo, id);
             }
-            else if (id > nodo.dato.Id)
+            else if (id.GetHashCode() > nodo.dato.Id.GetHashCode())
             {
                 nodo.hijoDerecho = this._Eliminar(nodo.hijoDerecho, id);
             }
@@ -141,7 +141,7 @@ namespace Clases
 
         }
 
-        private bool _Buscar(cNodoAVL nodo, int id)
+        private bool _Buscar(cNodoAVL nodo, string id)
         {
             if (nodo == null) return false;
 
@@ -149,7 +149,7 @@ namespace Clases
             {
                 return true;
             }
-            else if (nodo.dato.Id > id)
+            else if (nodo.dato.Id.GetHashCode() > id.GetHashCode())
             {
                 _Buscar(nodo.hijoIzquierdo, id);
             }
@@ -161,7 +161,7 @@ namespace Clases
             return false;
         }
 
-        private void _Modificar(cNodoAVL nodo, int id, Object dato)
+        private void _Modificar(cNodoAVL nodo, string id, cObjeto dato)
         {
             if (nodo == null) return;
 
@@ -170,7 +170,7 @@ namespace Clases
                 nodo.dato = dato;
                 return;
             }
-            else if (nodo.dato.Id > id)
+            else if (nodo.dato.Id.GetHashCode() > id.GetHashCode())
             {
                 _Modificar(nodo.hijoIzquierdo, id, dato);
             }
@@ -182,21 +182,21 @@ namespace Clases
 
         #endregion
 
-        public void Insertar(Object dato)
+        public void Insertar(cObjeto dato)
         {
             raiz = _Insertar(raiz, dato);
         }
-        public void Eliminar(int id)
+        public void Eliminar(string id)
         {
             raiz = _Eliminar(raiz, id);
         }
 
-        public bool Buscar(int id)
+        public bool Buscar(string id)
         {
             return _Buscar(raiz, id);
         }
 
-        public void Modificar(int id, cObjeto dato)
+        public void Modificar(string id, cObjeto dato)
         {
             _Modificar(raiz, id, dato);
         }
