@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-    internal class cLector
+    public class cLector
     {
         public string Id { get; set; }
         public string AP { get; set; }
@@ -15,14 +15,25 @@ namespace Clases
         public string Condicion { get; set; }
         public string Email { get; set; }
 
-        public void AgregarLector(string id, string ap, string am, string nombre, string condicion, string email)
+        public void PedirLector()
         {
-            Id = id;
-            AP = ap;
-            AM = am;
-            Nombre = nombre;
-            Condicion = condicion;
-            Email = email;
+            Console.Write("Ingrese ID: ");
+            Id = Console.ReadLine();
+
+            Console.Write("Ingrese AP: ");
+            AP = Console.ReadLine();
+
+            Console.Write("Ingrese AM: ");
+            AM = Console.ReadLine();
+
+            Console.Write("Ingrese Nombre: ");
+            Nombre = Console.ReadLine();
+
+            Console.Write("Ingrese Condicion: ");
+            Condicion = Console.ReadLine();
+
+            Console.Write("Ingrese Email: ");
+            Email = Console.ReadLine();
         }
         public void MostrarLector()
         {
