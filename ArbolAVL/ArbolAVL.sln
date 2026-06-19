@@ -5,7 +5,11 @@ VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArbolAVL", "ArbolAVL.csproj", "{CCD0F2F5-EF88-4531-97E4-65E37560216B}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clases", "..\Clases\Clases.csproj", "{E4CAD109-2038-1B3C-8C54-7CD841A9367A}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clases", "..\Clases\Clases.csproj", "{B080D9C9-0323-4A6B-A1F6-F0AE5AF59B3F}"
+>>>>>>> 781406797ab1083db0f3c05ad474cab772143e10
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +21,17 @@ Global
 		{CCD0F2F5-EF88-4531-97E4-65E37560216B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCD0F2F5-EF88-4531-97E4-65E37560216B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCD0F2F5-EF88-4531-97E4-65E37560216B}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{E4CAD109-2038-1B3C-8C54-7CD841A9367A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E4CAD109-2038-1B3C-8C54-7CD841A9367A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4CAD109-2038-1B3C-8C54-7CD841A9367A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4CAD109-2038-1B3C-8C54-7CD841A9367A}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{B080D9C9-0323-4A6B-A1F6-F0AE5AF59B3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B080D9C9-0323-4A6B-A1F6-F0AE5AF59B3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B080D9C9-0323-4A6B-A1F6-F0AE5AF59B3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B080D9C9-0323-4A6B-A1F6-F0AE5AF59B3F}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> 781406797ab1083db0f3c05ad474cab772143e10
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

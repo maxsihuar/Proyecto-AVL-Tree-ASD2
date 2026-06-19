@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-    internal class cPrestamo
+    public class cPrestamo
     {
         public string Id { get; set; }
         public string IdLector { get; set; }
@@ -14,13 +14,22 @@ namespace Clases
         public string FechaPrestamo { get; set; }
         public string FechaDevolucion { get; set; }
 
-        public void AgregarPrestamo(string id, string idLector, string idLibro, string fechaPrestamo, string fechaDevolucion)
+        public void PedirPrestamo()
         {
-            Id = id;
-            IdLector = idLector;
-            IdLibro = idLibro;
-            FechaPrestamo = fechaPrestamo;
-            FechaDevolucion = fechaDevolucion;
+            Console.Write("Ingrese ID: ");
+            Id = Console.ReadLine();
+
+            Console.Write("Ingrese IdLector: ");
+            IdLector = Console.ReadLine();
+
+            Console.Write("Ingrese IdLibro: ");
+            IdLibro = Console.ReadLine();
+
+            Console.Write("Ingrese Fecha del Prestamo: ");
+            FechaPrestamo = Console.ReadLine();
+
+            Console.Write("Ingrese Fecha de Devolucion ");
+            FechaDevolucion = Console.ReadLine();
         }
         public void MostrarPrestamo()
         {
@@ -50,6 +59,7 @@ namespace Clases
         {
             return Id == id;
         }
+
     }
 
 }

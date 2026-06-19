@@ -6,20 +6,29 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-    internal class CLibro
+    public class cLibro
     {
         public string Id { get; set; }
         public string Titulo { get; set; }
         public string Autor { get; set; }
         public string Anio { get; set; }
         public string Especialidad { get; set; }
-        public void AgregarLibro(string id, string titulo, string autor, string anio, string especialidad)
+        public void PedirLibro()
         {
-            Id = id;
-            Titulo = titulo;
-            Autor = autor;
-            Anio = anio;
-            Especialidad = especialidad;
+            Console.Write("Ingrese ID: ");
+            Id = Console.ReadLine();
+
+            Console.Write("Ingrese Título: ");
+            Titulo = Console.ReadLine();
+
+            Console.Write("Ingrese Autor: ");
+            Autor = Console.ReadLine();
+
+            Console.Write("Ingrese Año: ");
+            Anio = Console.ReadLine();
+
+            Console.Write("Ingrese Especialidad: ");
+            Especialidad = Console.ReadLine();
         }
         public void MostrarLibro()
         {
@@ -45,9 +54,19 @@ namespace Clases
             Anio = null;
             Especialidad = null;
         }
-        public bool BuscarLibro(string id)
+        public void BuscarLibro()
         {
-            return Id == id;
+            Console.Write("Ingrese ID del libro a buscar: ");
+            string idBuscado = Console.ReadLine();
+            if (Id == idBuscado)
+            {
+                Console.WriteLine("Libro encontrado:");
+                MostrarLibro();
+            }
+            else
+            {
+                Console.WriteLine("Libro no encontrado.");
+            }
         }
     }
 
