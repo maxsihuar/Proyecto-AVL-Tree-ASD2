@@ -12,7 +12,7 @@ namespace Clases
         private cNodoAVL raiz;
 
         #region Metodos Privados
-         
+
         private int Altura(cNodoAVL nodo)
         {
             return nodo == null ? 0 : nodo.altura;
@@ -28,7 +28,7 @@ namespace Clases
         }
 
         // Rotaciones
-        
+
         private cNodoAVL RotacionLL(cNodoAVL y)
         {
             cNodoAVL x = y.hijoIzquierdo;
@@ -79,7 +79,7 @@ namespace Clases
                 return new cNodoAVL(dato);
             }
 
-            if (((dynamic)dato).Id < ((dynamic)nodo.dato).Id())
+            if (((dynamic)dato).Id < ((dynamic)nodo.dato).Id)
             {
                 nodo.hijoIzquierdo = _Insertar(nodo.hijoIzquierdo, dato);
             }
@@ -96,7 +96,83 @@ namespace Clases
             return this.Balancear(nodo);
         }
 
+        private cNodoAVL Minimo(cNodoAVL nodo)
+        {
+            while (nodo.hijoIzquierdo != null)
+            {
+                nodo = nodo.hijoIzquierdo;
+            }
+            return nodo;
+        }
+
+
+        private cNodoAVL _Eliminar(cNodoAVL nodo, int id)
+        {
+            if (nodo == null)
+            {
+                return null;
+            }
+
+            if (id < ((dynamic)nodo.dato).Id)
+            {
+                nodo.hijoIzquierdo = this._Eliminar(nodo.hijoIzquierdo, id);
+            }
+            else if (id > ((dynamic)nodo.dato).Id)
+            {
+                nodo.hijoDerecho = this._Eliminar(nodo.hijoDerecho, id);
+            }
+            else
+            {
+                if (nodo.hijoIzquierdo == null)
+                {
+                    return nodo.hijoDerecho;
+                }
+                if (nodo.hijoDerecho == null)
+                {
+                    return nodo.hijoIzquierdo;
+                }
+
+                cNodoAVL succesor = this.Minimo(nodo.hijoDerecho);
+                nodo.dato = succesor.dato;
+                nodo.hijoDerecho = this._Eliminar(nodo.hijoDerecho, ((dynamic)succesor.dato).Id);
+            }
+            this.ActualizarAltura(nodo);
+            return this.Balancear(nodo);
+
+        }
+
+        private bool _Buscar(cNodoAVL nodo, int id)
+        {
+            if(((dynamic)nodo.dato).Id == id)
+            {
+                return true;
+            }
+            else if(((dynamic)nodo.dato).Id > id)
+            {
+                nodo = nodo.hijoIzquierdo;
+            }
+            else
+            {
+                nodo = nodo.hijoDerecho;
+            }
+
+            return false;
+        }
 
         #endregion
+
+        public void Insertar(Object dato)
+        {
+            raiz = _Insertar(raiz, dato);
+        }
+        public void Eliminar(int id)
+        {
+            raiz = _Eliminar(raiz, id);
+        }
+
+        public bool Buscar(int id)
+        {
+            return _Buscar(raiz, id);
+        }
     }
 }
