@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-    public class cLector
+    public class cLector : cObjeto
     {
-        public string Id { get; set; }
         public string AP { get; set; }
         public string AM { get; set; }
         public string Nombre { get; set; }
         public string Condicion { get; set; }
         public string Email { get; set; }
 
-        public void PedirLector()
+        public override void Pedir()
         {
-            Console.Write("Ingrese ID: ");
-            Id = Console.ReadLine();
+            base.Pedir();
 
             Console.Write("Ingrese AP: ");
             AP = Console.ReadLine();
@@ -37,7 +35,7 @@ namespace Clases
         }
         public void MostrarLector()
         {
-            Console.WriteLine("ID: " + Id);
+            base.Mostrar();
             Console.WriteLine("Apellido Paterno: " + AP);
             Console.WriteLine("Apellido Materno: " + AM);
             Console.WriteLine("Nombre: " + Nombre);
@@ -46,25 +44,21 @@ namespace Clases
         }
         public void ModificarLector(string id, string ap, string am, string nombre, string condicion, string email)
         {
-            Id = id;
+            base.Modificar(id);
             AP = ap;
             AM = am;
             Nombre = nombre;
             Condicion = condicion;
             Email = email;
         }
-        public void EliminarLector()
+        public override void Eliminar()
         {
-            Id = null;
+            base.Eliminar();
             AP = null;
             AM = null;
             Nombre = null;
             Condicion = null;
             Email = null;
-        }
-        public bool BuscarLector(string id)
-        {
-            return Id == id;
         }
     }
 }

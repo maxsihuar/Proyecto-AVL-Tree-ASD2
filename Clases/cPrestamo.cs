@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-    public class cPrestamo
+    public class cPrestamo : cObjeto
     {
-        public string Id { get; set; }
         public string IdLector { get; set; }
         public String IdLibro { get; set; }
         public string FechaPrestamo { get; set; }
         public string FechaDevolucion { get; set; }
 
-        public void PedirPrestamo()
+        public override void Pedir()
         {
+            base.Pedir();
+
             Console.Write("Ingrese ID: ");
             Id = Console.ReadLine();
 
@@ -31,33 +32,29 @@ namespace Clases
             Console.Write("Ingrese Fecha de Devolucion ");
             FechaDevolucion = Console.ReadLine();
         }
-        public void MostrarPrestamo()
+        public override void Mostrar()
         {
-            Console.WriteLine("ID: " + Id);
+            base.Mostrar();
             Console.WriteLine("ID Lector: " + IdLector);
             Console.WriteLine("ID Libro: " + IdLibro);
             Console.WriteLine("Fecha de Préstamo: " + FechaPrestamo);
             Console.WriteLine("Fecha de Devolución: " + FechaDevolucion);
         }
-        public void ModificarPrestamo(string id, string idLector, string idLibro, string fechaPrestamo, string fechaDevolucion)
+        public void Modificar(string id, string idLector, string idLibro, string fechaPrestamo, string fechaDevolucion)
         {
-            Id = id;
+            base.Modificar(id);
             IdLector = idLector;
             IdLibro = idLibro;
             FechaPrestamo = fechaPrestamo;
             FechaDevolucion = fechaDevolucion;
         }
-        public void EliminarPrestamo()
+        public override void Eliminar()
         {
-            Id = null;
+            base.Eliminar();
             IdLector = null;
             IdLibro = null;
             FechaPrestamo = null;
             FechaDevolucion = null;
-        }
-        public bool BuscarPrestamo(string id)
-        {
-            return Id == id;
         }
 
     }

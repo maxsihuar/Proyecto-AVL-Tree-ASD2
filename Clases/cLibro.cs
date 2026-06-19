@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-    public class cLibro
+    public class cLibro : cObjeto
     {
-        public string Id { get; set; }
         public string Titulo { get; set; }
         public string Autor { get; set; }
         public string Anio { get; set; }
         public string Especialidad { get; set; }
-        public void PedirLibro()
+        public override void Pedir()
         {
-            Console.Write("Ingrese ID: ");
-            Id = Console.ReadLine();
+            base.Pedir();
 
             Console.Write("Ingrese Título: ");
             Titulo = Console.ReadLine();
@@ -30,43 +28,29 @@ namespace Clases
             Console.Write("Ingrese Especialidad: ");
             Especialidad = Console.ReadLine();
         }
-        public void MostrarLibro()
+        public override void Mostrar()
         {
-            Console.WriteLine("ID: " + Id);
+            base.Mostrar();
             Console.WriteLine("Titulo: " + Titulo);
             Console.WriteLine("Autor: " + Autor);
             Console.WriteLine("Año: " + Anio);
             Console.WriteLine("Especialidad: " + Especialidad);
         }
-        public void ModificarLibro(string id, string titulo, string autor, string anio, string especialidad)
+        public void Modificar(string id, string titulo, string autor, string anio, string especialidad)
         {
-            Id = id;
+            base.Modificar(id);
             Titulo = titulo;
             Autor = autor;
             Anio = anio;
             Especialidad = especialidad;
         }
-        public void EliminarLibro()
+        public override void Eliminar()
         {
-            Id = null;
+            base.Eliminar();
             Titulo = null;
             Autor = null;
             Anio = null;
             Especialidad = null;
-        }
-        public void BuscarLibro()
-        {
-            Console.Write("Ingrese ID del libro a buscar: ");
-            string idBuscado = Console.ReadLine();
-            if (Id == idBuscado)
-            {
-                Console.WriteLine("Libro encontrado:");
-                MostrarLibro();
-            }
-            else
-            {
-                Console.WriteLine("Libro no encontrado.");
-            }
         }
     }
 
