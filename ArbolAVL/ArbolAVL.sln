@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArbolAVL", "ArbolAVL.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clases", "..\Clases\Clases.csproj", "{E4CAD109-2038-1B3C-8C54-7CD841A9367A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaGrafica", "..\BibliotecaGrafica\BibliotecaGrafica.csproj", "{79349680-DFE6-4C03-AB50-C9A79064FA0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E4CAD109-2038-1B3C-8C54-7CD841A9367A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4CAD109-2038-1B3C-8C54-7CD841A9367A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4CAD109-2038-1B3C-8C54-7CD841A9367A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79349680-DFE6-4C03-AB50-C9A79064FA0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79349680-DFE6-4C03-AB50-C9A79064FA0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79349680-DFE6-4C03-AB50-C9A79064FA0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79349680-DFE6-4C03-AB50-C9A79064FA0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
