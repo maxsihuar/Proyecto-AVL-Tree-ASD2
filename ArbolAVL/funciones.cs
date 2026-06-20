@@ -27,15 +27,33 @@ namespace ArbolAVL
         }
 
         public void InsertarObjeto(cArbolAVL arbol)
-        {   
-            cObjeto dato = new cObjeto();
-            dato.Pedir();
+        {
+            string id;
+            cObjeto dato;
 
-            int resultado = ValidarId(arbol, dato.Id);
+            if (arbol.Tipo == "Libro")
+            {
+                dato = new cLibro();
+
+                Console.Write("Ingrese el ID del libro: ");
+                id = Console.ReadLine();
+            }
+            else
+            {
+                dato = new cLector();
+                Console.Write("Ingrese el ID del lector: ");
+                id = Console.ReadLine();
+            }
+
+
+            int resultado = ValidarId(arbol, id);
 
             if (resultado == 102)
             {
+                dato.Pedir();
+                dato.Id = id;
                 arbol.Insertar(dato);
+                Console.WriteLine("Objeto insertado con éxito.");
             }
             else
             {
@@ -46,16 +64,21 @@ namespace ArbolAVL
         public void InsertarPrestamo(cArbolAVL arbol, cArbolAVL arbolLibros, cArbolAVL arbolLector)
         {
             cPrestamo dato = new cPrestamo();
-            dato.Pedir();
+
+            Console.Write("Ingrese el ID del préstamo: ");
+            string id = Console.ReadLine();
 
             int resultadoLibro = ValidarId(arbolLibros, dato.IdLibro);
             int reultadoLector = ValidarId(arbolLector, dato.IdLector);
 
-            int resultado = ValidarId(arbol, dato.Id);
+            int resultado = ValidarId(arbol, id);
 
             if (resultado == 102 && resultadoLibro == 101 && reultadoLector == 101)
             {
+                dato.Pedir();
+                dato.Id = id;
                 arbol.Insertar(dato);
+                Console.WriteLine("Objeto insertado con éxito.");
             }
             else if (resultadoLibro == 102)
             {
@@ -71,12 +94,19 @@ namespace ArbolAVL
             }
         }
 
-        public void ModificarObjeto(cArbolAVL arbol, cObjeto dato)
+        public void ModificarObjeto(cArbolAVL arbol)
         {
-            int resultado = ValidarId(arbol, dato.Id);
+            cObjeto dato = new cObjeto();
+
+            Console.Write("Ingrese el ID del objeto a modificar: ");
+            string id = Console.ReadLine();
+
+            int resultado = ValidarId(arbol, id);
             if (resultado == 101)
             {
-                arbol.Modificar(dato.Id, dato);
+                dato.Pedir();
+                dato.Id = id;
+                arbol.Modificar(id, dato);
             }
             else
             {
@@ -84,8 +114,11 @@ namespace ArbolAVL
             }
         }
 
-        public void EliminarObjeto(cArbolAVL arbol, string id)
+        public void EliminarObjeto(cArbolAVL arbol)
         {
+            Console.Write("Ingrese el ID del objeto a eliminar: ");
+            string id = Console.ReadLine();
+
             int resultado = ValidarId(arbol, id);
             if (resultado == 101)
             {
@@ -97,13 +130,66 @@ namespace ArbolAVL
             }
         }
 
+        public void BuscarObjeto(cArbolAVL arbol)
+        {
+            Console.Write("Ingrese el ID del objeto a buscar: ");
+            string id = Console.ReadLine();
+            if (arbol.Buscar(id))
+            {
+                Console.WriteLine("El objeto existe:");
+                List<cObjeto> lista = arbol.InOrden();
+                cObjeto encontrado = lista.FirstOrDefault(o => o.Id == id);
+                encontrado.Mostrar();
+
+            }
+            else
+            {
+                Console.WriteLine("El objeto no existe");
+            }
+        }
+
         #region ************Reportes*****************
 
         public void ReporteGeneral(cArbolAVL arbol)
         {
             List<cObjeto> lista = arbol.InOrden();
 
+            if(lista.Count() == 0) 
+            { 
+                Console.WriteLine("No hay datos para mostrar");
+                return;
+            }
 
+            if (lista.FirstOrDefault() is cLibro)
+            {
+                Console.WriteLine(new string('-', 112));
+
+                Console.WriteLine($"{"ID",-8} | {"Título",-35} | {"Autor",-25} | {"Año",-6} | {"Especialidad"}");
+
+                Console.WriteLine(new string('-', 112));
+            }
+            else if (lista.FirstOrDefault() is cPrestamo)
+            {
+
+                Console.WriteLine(new string('-', 75));
+
+                Console.WriteLine($"{"ID Pres.",-8} | {"ID Lector",-10} |{"ID Libro",-10} | {"F. Préstamo",-12} | {"F. Devolución"}");
+
+                Console.WriteLine(new string('-', 75));
+            }
+            else
+            {
+                Console.WriteLine(new string('-', 115));
+
+                Console.WriteLine($"{"ID",-8} | {"Ape. Paterno",-18} | {"Ape. Materno",-18} | {"Nombre",-20} | {"Condición",-12} | {"Email",-25}");
+
+                Console.WriteLine(new string('-', 115));
+            }
+
+            foreach (cObjeto dato in lista)
+            {
+                dato.Mostrar();
+            }
         }
 
 

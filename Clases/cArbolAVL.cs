@@ -9,6 +9,13 @@ namespace Clases
 {
     public class cArbolAVL
     {
+        public string Tipo { get; set; }
+
+        public cArbolAVL(string tipo)
+        {
+            this.Tipo = tipo;
+        }
+
         private cNodoAVL raiz;
 
         #region Metodos Privados

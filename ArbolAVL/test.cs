@@ -11,9 +11,9 @@ namespace ArbolAVL
 {
     public class test
     {
-        public cArbolAVL arbolLibros = new cArbolAVL();
-        public cArbolAVL arbolLectores = new cArbolAVL();
-        public cArbolAVL arbolPrestamos = new cArbolAVL();
+        public cArbolAVL arbolLibros = new cArbolAVL("Libro");
+        public cArbolAVL arbolLectores = new cArbolAVL("Lector");
+        public cArbolAVL arbolPrestamos = new cArbolAVL("Prestamo");
         public void CargarDatos()
         {  
             //Libros

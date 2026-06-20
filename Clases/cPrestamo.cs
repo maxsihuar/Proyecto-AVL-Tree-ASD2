@@ -15,7 +15,6 @@ namespace Clases
 
         public override void Pedir()
         {
-            base.Pedir();
 
             Console.Write("Ingrese ID: ");
             Id = Console.ReadLine();
@@ -34,9 +33,8 @@ namespace Clases
         }
         public override void Mostrar()
         {
-            base.Mostrar();
 
-            Console.WriteLine($"{IdLector,-10} |{IdLibro,-10} | {FechaPrestamo,-12} | {FechaDevolucion}");
+            Console.WriteLine($"{base.Id, -8} | {IdLector,-10} |{IdLibro,-10} | {FechaPrestamo,-12} | {FechaDevolucion}");
         }
         public void Modificar(string id, string idLector, string idLibro, string fechaPrestamo, string fechaDevolucion)
         {

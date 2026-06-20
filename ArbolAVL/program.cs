@@ -5,20 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Clases;
 
+
 namespace ArbolAVL
 {
        
     class program
     {
+        public funciones fn = new funciones();
         #region Menús
         void MenuOS(string titulo)
         {
-            Console.WriteLine("===== MENÚ REGISTRAR " + titulo + "=====");
+            Console.WriteLine("===== MENÚ " + titulo + "=====");
             Console.WriteLine("1. Agregar " + titulo);
-            Console.WriteLine("2. Mostrar " + titulo);
-            Console.WriteLine("3. Modificar " + titulo);
-            Console.WriteLine("4. Eliminar " + titulo);
-            Console.WriteLine("5. Buscar " + titulo);
+            Console.WriteLine("2. Modificar " + titulo);
+            Console.WriteLine("3. Eliminar " + titulo);
+            Console.WriteLine("4. Buscar " + titulo);
+            Console.WriteLine("5. Listar " + titulo);
             Console.WriteLine("6. Salir");
             Console.WriteLine("Seleccione una opción: ");
 
@@ -33,21 +35,22 @@ namespace ArbolAVL
                 switch (opcion_)
                 {
                     case 1:
-                        cLibro Libro = new cLibro();
-                        Libro.Pedir();
-                        Libros.Insertar(Libro);
-                        Console.WriteLine("Libro agregado exitosamente.");
+                        fn.InsertarObjeto(Libros);
                         break;
                     case 2:
+                        fn.ModificarObjeto(Libros);
                         break;
-
                     case 3:
+                        fn.EliminarObjeto(Libros);
                         break;
                     case 4:
+                        fn.BuscarObjeto(Libros);
                         break;
                     case 5:
+                        fn.ReporteGeneral(Libros);
                         break;
                     case 6:
+                        return;
                         break;
                     default:
                         Console.WriteLine("Opción no válida.");
@@ -67,21 +70,22 @@ namespace ArbolAVL
                 switch (opcion_)
                 {
                     case 1:
-                        cLector Lector = new cLector();
-                        Lector.Pedir();
-                        Lectores.Insertar(Lector);
-                        Console.WriteLine("Lector agregado exitosamente.");
+                        fn.InsertarObjeto(Lectores);
                         break;
                     case 2:
+                        fn.ModificarObjeto(Lectores);
                         break;
-
                     case 3:
+                        fn.EliminarObjeto(Lectores);
                         break;
                     case 4:
+                        fn.BuscarObjeto(Lectores);
                         break;
                     case 5:
+                        fn.ReporteGeneral(Lectores);
                         break;
                     case 6:
+                        return;
                         break;
                     default:
                         Console.WriteLine("Opción no válida.");
@@ -91,7 +95,7 @@ namespace ArbolAVL
             }
             while (opcion_ != 6);
         }
-        void MenuPrestamos(cArbolAVL Prestamos)
+        void MenuPrestamos(cArbolAVL Prestamos, cArbolAVL Libros, cArbolAVL Lectores)
         {
             int opcion_;
             do
@@ -101,21 +105,22 @@ namespace ArbolAVL
                 switch (opcion_)
                 {
                     case 1:
-                        cPrestamo Prestamo = new cPrestamo();
-                        Prestamo.Pedir();
-                        Prestamos.Insertar(Prestamo);
-                        Console.WriteLine("Prestamo agregado exitosamente.");
+                        fn.InsertarPrestamo(Prestamos, Libros, Lectores);
                         break;
                     case 2:
+                        fn.ModificarObjeto(Prestamos);
                         break;
-
                     case 3:
+                        fn.EliminarObjeto(Prestamos);
                         break;
                     case 4:
+                        fn.BuscarObjeto(Prestamos);
                         break;
                     case 5:
+                        fn.ReporteGeneral(Prestamos);
                         break;
                     case 6:
+                        return;
                         break;
                     default:
                         Console.WriteLine("Opción no válida.");
@@ -125,12 +130,13 @@ namespace ArbolAVL
             }
             while (opcion_ != 6);
         }
-        void Menu()
+        void Menu(cArbolAVL Prestamos, cArbolAVL Libros, cArbolAVL Lectores)
         {
             int opcion;
 
             do
             {
+                Console.Clear();
                 Console.WriteLine("\n===== MENÚ PRINCIPAL =====");
                 Console.WriteLine("1. Registrar Libro");
                 Console.WriteLine("2. Registrar Lector");
@@ -140,17 +146,17 @@ namespace ArbolAVL
                 Console.Write("Seleccione una opción: ");
 
                 opcion = int.Parse(Console.ReadLine());
-
+                Console.Clear();
                 switch (opcion)
                 {
                     case 1:
-                        //MenuLibros(new Object());
+                        MenuLibros(Libros);
                         break;
                     case 2:
-                        //MenuLectores(new Object());
+                        MenuLectores(Lectores);
                         break;
                     case 3:
-                        //MenuPrestamos(new Object());
+                        MenuPrestamos(Prestamos, Libros, Lectores);
                         break;
                     case 4:
                         Console.WriteLine("Saliendo del programa...");
@@ -167,12 +173,14 @@ namespace ArbolAVL
 
         static void Main(string[] args)
         {
+            program main = new program();
+
             test datos = new test();
             datos.CargarDatos();
             cArbolAVL Libros = datos.arbolLibros;
             cArbolAVL Lectores = datos.arbolLectores;
             cArbolAVL Prestamos = datos.arbolPrestamos;
-            Console.WriteLine(Libros.Buscar("L001"));
+            main.Menu(Prestamos, Libros, Lectores);
         }
     }
 }

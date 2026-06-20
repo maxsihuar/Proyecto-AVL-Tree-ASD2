@@ -14,7 +14,6 @@ namespace Clases
         public string Especialidad { get; set; }
         public override void Pedir()
         {
-            base.Pedir();
 
             Console.Write("Ingrese Título: ");
             Titulo = Console.ReadLine();
@@ -30,11 +29,8 @@ namespace Clases
         }
         public override void Mostrar()
         {
-            base.Mostrar();
-            Console.WriteLine("Titulo: " + Titulo);
-            Console.WriteLine("Autor: " + Autor);
-            Console.WriteLine("Año: " + Anio);
-            Console.WriteLine("Especialidad: " + Especialidad);
+
+            Console.WriteLine($" {base.Id, -8} | {Titulo,-35} | {Autor,-25} | {Anio,-6} |{Especialidad}");
         }
         public void Modificar(string id, string titulo, string autor, string anio, string especialidad)
         {
