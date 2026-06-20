@@ -29,57 +29,74 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
-            label2 = new Label();
-            button1 = new Button();
+            btn_Libro = new Button();
+            btn_Prestamo = new Button();
+            btn_Lector = new Button();
             SuspendLayout();
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(288, 79);
+            label1.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ImageAlign = ContentAlignment.MiddleLeft;
+            label1.Location = new Point(160, 51);
             label1.Name = "label1";
-            label1.Size = new Size(151, 20);
+            label1.RightToLeft = RightToLeft.Yes;
+            label1.Size = new Size(542, 62);
             label1.TabIndex = 0;
-            label1.Text = "Gestion de Biblioteca";
-            label1.Click += label1_Click_1;
+            label1.Text = "GESTION DE BIBLIOTECA";
+            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // textBox1
+            // btn_Libro
             // 
-            textBox1.Location = new Point(228, 188);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(490, 27);
-            textBox1.TabIndex = 1;
-            textBox1.TextChanged += textBox1_TextChanged;
+            btn_Libro.Anchor = AnchorStyles.None;
+            btn_Libro.AutoSize = true;
+            btn_Libro.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Libro.Location = new Point(376, 170);
+            btn_Libro.Name = "btn_Libro";
+            btn_Libro.Size = new Size(110, 40);
+            btn_Libro.TabIndex = 1;
+            btn_Libro.Text = "Libros";
+            btn_Libro.UseVisualStyleBackColor = true;
+            btn_Libro.Click += btn_Libro_Click;
             // 
-            // label2
+            // btn_Prestamo
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(146, 195);
-            label2.Name = "label2";
-            label2.Size = new Size(67, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Nombre:";
+            btn_Prestamo.Anchor = AnchorStyles.None;
+            btn_Prestamo.AutoSize = true;
+            btn_Prestamo.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Prestamo.Location = new Point(376, 310);
+            btn_Prestamo.Name = "btn_Prestamo";
+            btn_Prestamo.Size = new Size(110, 40);
+            btn_Prestamo.TabIndex = 2;
+            btn_Prestamo.Text = "Prestamo";
+            btn_Prestamo.UseVisualStyleBackColor = true;
+            btn_Prestamo.Click += btn_Prestamo_Click;
             // 
-            // button1
+            // btn_Lector
             // 
-            button1.Location = new Point(724, 191);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btn_Lector.Anchor = AnchorStyles.None;
+            btn_Lector.AutoSize = true;
+            btn_Lector.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Lector.Location = new Point(376, 240);
+            btn_Lector.Name = "btn_Lector";
+            btn_Lector.Size = new Size(110, 40);
+            btn_Lector.TabIndex = 3;
+            btn_Lector.Text = "Lector";
+            btn_Lector.UseVisualStyleBackColor = true;
+            btn_Lector.Click += btn_Lector_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(818, 466);
-            Controls.Add(button1);
-            Controls.Add(label2);
-            Controls.Add(textBox1);
+            ClientSize = new Size(862, 504);
+            Controls.Add(btn_Lector);
+            Controls.Add(btn_Prestamo);
+            Controls.Add(btn_Libro);
             Controls.Add(label1);
+            Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "Form1";
             Text = "Menu Principal";
             Load += Form1_Load;
@@ -90,8 +107,8 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
-        private Label label2;
-        private Button button1;
+        private Button btn_Libro;
+        private Button btn_Prestamo;
+        private Button btn_Lector;
     }
 }

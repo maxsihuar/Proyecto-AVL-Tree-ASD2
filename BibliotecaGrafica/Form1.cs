@@ -12,24 +12,44 @@ namespace BibliotecaGrafica
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
+        private void btn_Libro_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2("MENU DE LIBROS");
+            form2.FormClosed += (s, args) => Application.Exit();
+
+            form2.StartPosition = FormStartPosition.Manual;
+            form2.Location = this.Location;
+            form2.Size = this.Size;
+
+            form2.Show();
+            this.Hide();
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
+        private void btn_Lector_Click(object sender, EventArgs e)
         {
+            Form2 form2 = new Form2("MENU DE LECTORES");
+            form2.FormClosed += (s, args) => Application.Exit();
 
+            form2.StartPosition = FormStartPosition.Manual;
+            form2.Location = this.Location;
+            form2.Size = this.Size;
+
+            form2.Show();
+            this.Hide();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void btn_Prestamo_Click(object sender, EventArgs e)
         {
+            Form2 form2 = new Form2("MENU DE PRESTAMOS");
+            form2.FormClosed += (s, args) => Application.Exit();
 
-        }
+            form2.StartPosition = FormStartPosition.Manual;
+            form2.Location = this.Location;
+            form2.Size = this.Size;
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            form2.Show();
+            this.Hide();
         }
     }
 }
