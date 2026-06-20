@@ -73,6 +73,7 @@
             btn_Modificar.TabIndex = 2;
             btn_Modificar.Text = "Modificar";
             btn_Modificar.UseVisualStyleBackColor = true;
+            btn_Modificar.Click += btn_Modificar_Click;
             // 
             // btn_Eliminar
             // 
@@ -119,7 +120,7 @@
             btn_Salir.Name = "btn_Salir";
             btn_Salir.Size = new Size(110, 35);
             btn_Salir.TabIndex = 6;
-            btn_Salir.Text = "Salir";
+            btn_Salir.Text = "Regresar";
             btn_Salir.UseVisualStyleBackColor = true;
             btn_Salir.Click += btn_Salir_Click;
             // 

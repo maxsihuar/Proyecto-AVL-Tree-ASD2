@@ -12,9 +12,14 @@ namespace BibliotecaGrafica
 {
     public partial class Form2 : Form
     {
-        public string Titulo { get; set; }
-        public Form2(string Titulo)
+        private Form1 form_Anterior;
+
+        public string ObjetoSeleccionado { get; set; }
+        public Form2(string Titulo, string Objeto, Form1 anterior)
         {
+            ObjetoSeleccionado = Objeto;
+            form_Anterior = anterior;
+
             InitializeComponent();
             lb_Titulo.Text = Titulo;
             lb_Titulo.Location = new Point((this.ClientSize.Width - lb_Titulo.Size.Width) / 2, 40);
@@ -27,7 +32,20 @@ namespace BibliotecaGrafica
 
         private void btn_Insetar_Click(object sender, EventArgs e)
         {
-            Form_Insetar_Modificar formInsetarModificar = new Form_Insetar_Modificar();
+            Form_Insetar_Modificar formInsetarModificar = new Form_Insetar_Modificar(ObjetoSeleccionado, "Insertar", this);
+            formInsetarModificar.FormClosed += (s, args) => Application.Exit();
+
+            formInsetarModificar.StartPosition = FormStartPosition.Manual;
+            formInsetarModificar.Location = this.Location;
+            formInsetarModificar.Size = this.Size;
+
+            formInsetarModificar.Show();
+            this.Hide();
+        }
+
+        private void btn_Modificar_Click(object sender, EventArgs e)
+        {
+            Form_Insetar_Modificar formInsetarModificar = new Form_Insetar_Modificar(ObjetoSeleccionado, "Modificar", this);
             formInsetarModificar.FormClosed += (s, args) => Application.Exit();
 
             formInsetarModificar.StartPosition = FormStartPosition.Manual;
@@ -40,15 +58,12 @@ namespace BibliotecaGrafica
 
         private void btn_Salir_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            form1.FormClosed += (s, args) => Application.Exit();
-
-            form1.StartPosition = FormStartPosition.Manual;
-            form1.Location = this.Location;
-            form1.Size = this.Size;
-
-            form1.Show();
+            form_Anterior.StartPosition = FormStartPosition.Manual;
+            form_Anterior.Location = this.Location;
+            form_Anterior.Size = this.Size;
+            form_Anterior.Show();
             this.Hide();
         }
+
     }
 }

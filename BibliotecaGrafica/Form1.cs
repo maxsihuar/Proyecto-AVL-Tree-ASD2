@@ -15,7 +15,7 @@ namespace BibliotecaGrafica
 
         private void btn_Libro_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2("MENU DE LIBROS");
+            Form2 form2 = new Form2("MENU DE LIBROS", "Libro", this);
             form2.FormClosed += (s, args) => Application.Exit();
 
             form2.StartPosition = FormStartPosition.Manual;
@@ -28,7 +28,8 @@ namespace BibliotecaGrafica
 
         private void btn_Lector_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2("MENU DE LECTORES");
+            Form2 form2 = new Form2("MENU DE LECTORES", "Lector", this);
+            form2.ObjetoSeleccionado = "Lector";
             form2.FormClosed += (s, args) => Application.Exit();
 
             form2.StartPosition = FormStartPosition.Manual;
@@ -41,7 +42,8 @@ namespace BibliotecaGrafica
 
         private void btn_Prestamo_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2("MENU DE PRESTAMOS");
+            Form2 form2 = new Form2("MENU DE PRESTAMOS", "Prestamo", this);
+            form2.ObjetoSeleccionado = "Prestamo";
             form2.FormClosed += (s, args) => Application.Exit();
 
             form2.StartPosition = FormStartPosition.Manual;
