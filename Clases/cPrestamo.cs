@@ -52,6 +52,11 @@ namespace Clases
             FechaPrestamo = null;
             FechaDevolucion = null;
         }
+        public bool FueraDePlazo()
+        {
+            DateTime fechadev = DateTime.Parse(FechaDevolucion);
+            return DateTime.Today > fechadev;
+        }
 
     }
 

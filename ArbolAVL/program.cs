@@ -181,6 +181,8 @@ namespace ArbolAVL
             cArbolAVL Lectores = datos.arbolLectores;
             cArbolAVL Prestamos = datos.arbolPrestamos;
             main.Menu(Prestamos, Libros, Lectores);
+            funciones hola = new funciones();
+            hola.ReporteListarPorEspecialidad(Libros);
         }
     }
 }
