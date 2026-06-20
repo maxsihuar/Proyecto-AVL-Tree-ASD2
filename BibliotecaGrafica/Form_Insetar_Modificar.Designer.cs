@@ -121,6 +121,7 @@
             btn_Subir.TabIndex = 5;
             btn_Subir.Text = "Subir";
             btn_Subir.UseVisualStyleBackColor = true;
+            btn_Subir.Click += btn_Subir_Click;
             // 
             // btn_Regresar
             // 

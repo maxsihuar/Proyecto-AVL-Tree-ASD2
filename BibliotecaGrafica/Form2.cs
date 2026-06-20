@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,11 +15,18 @@ namespace BibliotecaGrafica
     {
         private Form1 form_Anterior;
 
+        public cArbolAVL arbolLibros { get; set; }
+        public cArbolAVL arbolLectores { get; set; }
+        public cArbolAVL arbolPrestamos { get; set; }
+
         public string ObjetoSeleccionado { get; set; }
         public Form2(string Titulo, string Objeto, Form1 anterior)
         {
             ObjetoSeleccionado = Objeto;
             form_Anterior = anterior;
+            arbolLibros = anterior.arbolLibros;
+            arbolLectores = anterior.arbolLectores;
+            arbolPrestamos = anterior.arbolPrestamos;
 
             InitializeComponent();
             lb_Titulo.Text = Titulo;

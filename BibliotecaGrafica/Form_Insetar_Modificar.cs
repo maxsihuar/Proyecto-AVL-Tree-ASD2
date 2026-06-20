@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace BibliotecaGrafica
 {
     public partial class Form_Insetar_Modificar : Form
     {
+        private List<TextBox> texts = new List<TextBox>();
         private int tm_TextBox = 400;
         private int tm_Label = 100;
         private Form2 form_Anterior;
+
+        public cArbolAVL arbolLibros { get; set; }
+        public cArbolAVL arbolLectores { get; set; }
+        public cArbolAVL arbolPrestamos { get; set; }
+
+        public Controlador control = new Controlador();
+
         public string TipoOperacion { get; set; }
         public string ObjetoSeleccionado { get; set; }
         public Form_Insetar_Modificar(string Objeto, string Tipo, Form2 Anterior)
@@ -22,10 +32,15 @@ namespace BibliotecaGrafica
             ObjetoSeleccionado = Objeto;
             TipoOperacion = Tipo;
             form_Anterior = Anterior;
+            arbolLibros = Anterior.arbolLibros;
+            arbolLectores = Anterior.arbolLectores;
+            arbolPrestamos = Anterior.arbolPrestamos;
 
             InitializeComponent();
             lb_Titulo.Text = $"{TipoOperacion.ToUpper()} {ObjetoSeleccionado.ToUpper()}";
             lb_Titulo.Location = new Point((this.ClientSize.Width - lb_Titulo.Size.Width) / 2, 40);
+
+            texts.Add(textBox1);
             ComponentesDinamicos();
         }
 
@@ -82,14 +97,112 @@ namespace BibliotecaGrafica
                 txtEspecialidad.Width = tm_TextBox; txtEspecialidad.Height = 30;
                 tableLayoutPanel1.Controls.Add(txtEspecialidad);
 
+                texts.Add(txtTitulo); texts.Add(txtAutor); texts.Add(txtAnio); texts.Add(txtEspecialidad);
+
 
             }
+            if (this.ObjetoSeleccionado == "Lector")
+            {
+                Label lb1 = new Label();
+                lb1.Text = "Apellido Paterno:";
+                lb1.Width = tm_Label; lb1.Height = 30;
+                lb1.AutoSize = true; lb1.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                tableLayoutPanel1.Controls.Add(lb1);
 
+                TextBox txtAP = new TextBox();
+                txtAP.Width = tm_TextBox; txtAP.Height = 30;
+                tableLayoutPanel1.Controls.Add(txtAP);
+
+                Label lb2 = new Label();
+                lb2.Text = "Apellido Materno:";
+                lb2.Width = tm_Label; lb2.Height = 30;
+                lb2.AutoSize = true; lb2.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                tableLayoutPanel1.Controls.Add(lb2);
+
+                TextBox txtAM = new TextBox();
+                txtAM.Width = tm_TextBox; txtAM.Height = 30;
+                tableLayoutPanel1.Controls.Add(txtAM);
+
+                Label lb3 = new Label();
+                lb3.Text = "Nombre:";
+                lb3.Width = tm_Label; lb3.Height = 30;
+                lb3.AutoSize = true; lb3.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                tableLayoutPanel1.Controls.Add(lb3);
+
+                TextBox txtNombre = new TextBox();
+                txtNombre.Width = tm_TextBox; txtNombre.Height = 30;
+                tableLayoutPanel1.Controls.Add(txtNombre);
+
+                Label lb4 = new Label();
+                lb4.Text = "Condicion:";
+                lb4.Width = tm_Label; lb4.Height = 30;
+                lb4.AutoSize = true; lb4.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                tableLayoutPanel1.Controls.Add(lb4);
+
+                TextBox txtCondicion = new TextBox();
+                txtCondicion.Width = tm_TextBox; txtCondicion.Height = 30;
+                tableLayoutPanel1.Controls.Add(txtCondicion);
+
+                Label lb5 = new Label();
+                lb5.Text = "Email:";
+                lb5.Width = tm_Label; lb5.Height = 30;
+                lb5.AutoSize = true; lb5.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                tableLayoutPanel1.Controls.Add(lb5);
+
+                TextBox txtEmail = new TextBox();
+                txtEmail.Width = tm_TextBox; txtEmail.Height = 30;
+                tableLayoutPanel1.Controls.Add(txtEmail);
+
+                texts.Add(txtAP); texts.Add(txtAM); texts.Add(txtNombre); texts.Add(txtCondicion); texts.Add(txtEmail);
+            }
+            if (this.ObjetoSeleccionado == "Prestamo")
+            {
+                Label lb1 = new Label();
+                lb1.Text = "Id Lector:";
+                lb1.Width = tm_Label; lb1.Height = 30;
+                lb1.AutoSize = true; lb1.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                tableLayoutPanel1.Controls.Add(lb1);
+
+                TextBox txtIdLector = new TextBox();
+                txtIdLector.Width = tm_TextBox; txtIdLector.Height = 30;
+                tableLayoutPanel1.Controls.Add(txtIdLector);
+
+                Label lb2 = new Label();
+                lb2.Text = "Id Libro:";
+                lb2.Width = tm_Label; lb2.Height = 30;
+                lb2.AutoSize = true; lb2.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                tableLayoutPanel1.Controls.Add(lb2);
+
+                TextBox txtIdLibro = new TextBox();
+                txtIdLibro.Width = tm_TextBox; txtIdLibro.Height = 30;
+                tableLayoutPanel1.Controls.Add(txtIdLibro);
+
+                Label lb3 = new Label();
+                lb3.Text = "Fecha de Prestamos:";
+                lb3.Width = tm_Label; lb3.Height = 30;
+                lb3.AutoSize = true; lb3.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                tableLayoutPanel1.Controls.Add(lb3);
+
+                TextBox txtFP = new TextBox();
+                txtFP.Width = tm_TextBox; txtFP.Height = 30;
+                tableLayoutPanel1.Controls.Add(txtFP);
+
+                Label lb4 = new Label();
+                lb4.Text = "Fecha de Devolucion:";
+                lb4.Width = tm_Label; lb4.Height = 30;
+                lb4.AutoSize = true; lb4.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                tableLayoutPanel1.Controls.Add(lb4);
+
+                TextBox txtFD = new TextBox();
+                txtFD.Width = tm_TextBox; txtFD.Height = 30;
+                tableLayoutPanel1.Controls.Add(txtFD);
+
+                texts.Add(txtIdLector); texts.Add(txtIdLibro); texts.Add(txtFP); texts.Add(txtFD);
+
+            }
         }
 
-
         #endregion
-
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -105,7 +218,7 @@ namespace BibliotecaGrafica
                 errorProvider1.SetError(textBox1, "El texto no es válido. Debe tener al menos 3 caracteres.");
 
                 // OPCIONAL: Esto evita que el usuario cambie de casilla hasta que lo corrija
-                // e.Cancel = true; 
+                //e.Cancel = true; 
             }
             else
             {
@@ -114,13 +227,101 @@ namespace BibliotecaGrafica
             }
         }
 
+        
         private void btn_ValidarId_Click(object sender, EventArgs e)
         {
+            string id = textBox1.Text;
+            errorProvider1.SetError(textBox1, "");
+
             if (!string.IsNullOrEmpty(errorProvider1.GetError(textBox1)))
             {
                 MessageBox.Show("Por favor, corrige los errores antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Detiene la ejecución del botón
             }
+            if(TipoOperacion == "Insertar")
+            {
+                if (ObjetoSeleccionado == "Libro")
+                {
+                    if (control.ValidarId(arbolLibros, id) == 101)
+                    {
+                        errorProvider1.SetError(textBox1, "El Libro ya existe");
+                    }
+                    else { errorProvider1.SetError(textBox1, ""); }
+                }
+                if (ObjetoSeleccionado == "Lector")
+                {
+                    if (control.ValidarId(arbolLectores, id) == 101)
+                    {
+                        errorProvider1.SetError(textBox1, "El Lector ya existe");
+                    }
+                    else { errorProvider1.SetError(textBox1, ""); }
+                }
+                if (ObjetoSeleccionado == "Prestamo")
+                {
+                    if (control.ValidarId(arbolPrestamos, id) == 101)
+                    {
+                        errorProvider1.SetError(textBox1, "El Prestamo ya existe");
+                    }
+                    else { errorProvider1.SetError(textBox1, ""); }
+                }
+            }
+            else
+            {
+                if (ObjetoSeleccionado == "Libro")
+                {
+                    if (control.ValidarId(arbolLibros, id) == 102)
+                    {
+                        errorProvider1.SetError(textBox1, "El Libro no existe");
+                        return;
+                    }
+                    else 
+                    {
+                        List<string> l = control.BuscarObjeto(arbolLibros, id);
+                        errorProvider1.SetError(textBox1, "");
+                        texts[0].Text = l[0]; // Título
+                        texts[1].Text = l[1]; // Autor
+                        texts[2].Text = l[2]; // Año
+                        texts[3].Text = l[3];
+                        texts[4].Text = l[4];
+                    }
+                }
+                if (ObjetoSeleccionado == "Lector")
+                {
+                    if (control.ValidarId(arbolLectores, id) == 102)
+                    {
+                        errorProvider1.SetError(textBox1, "El Lector no existe");
+                        return;
+                    }
+                    else
+                    { 
+                        errorProvider1.SetError(textBox1, "");
+                        List<string> l = control.BuscarObjeto(arbolLectores, id);
+                        errorProvider1.SetError(textBox1, "");
+                        for (int i = 0; i < 6; i++)
+                        {
+                            texts[i].Text = l[i];
+                        }
+                    }
+                }
+                if (ObjetoSeleccionado == "Prestamo")
+                {
+                    if (control.ValidarId(arbolLibros, id) == 102)
+                    {
+                        errorProvider1.SetError(textBox1, "El Prestamo no existe");
+                        return;
+                    }
+                    else 
+                    { 
+                        errorProvider1.SetError(textBox1, "");
+                        List<string> l = control.BuscarObjeto(arbolPrestamos, id);
+                        errorProvider1.SetError(textBox1, "");
+                        for (int i = 0; i < 5; i++)
+                        {
+                            texts[i].Text = l[i];
+                        }
+                    }
+                }
+            }
+
         }
 
         private void btn_Regresar_Click(object sender, EventArgs e)
@@ -135,6 +336,58 @@ namespace BibliotecaGrafica
         private void lb_Titulo_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private List<string> Datos = new List<string>();
+        private void btn_Subir_Click(object sender, EventArgs e)
+        {
+            foreach(TextBox txt in texts)
+            {
+               Datos.Add(txt.Text);
+            }
+
+            List<string> mensaje = new List<string>();
+            
+            if(this.TipoOperacion == "Insertar") 
+            {
+                if (this.ObjetoSeleccionado == "Libro")
+                {
+                    mensaje = control.InsertarObjeto(arbolLibros, Datos);
+                }
+                if (this.ObjetoSeleccionado == "Lector")
+                {
+                    mensaje = control.InsertarObjeto(arbolLectores, Datos);
+                }
+                if (this.ObjetoSeleccionado == "Prestamo")
+                {
+                    mensaje = control.InsertarObjeto(arbolPrestamos, Datos);
+                }
+            }
+            else
+            {
+                if (this.ObjetoSeleccionado == "Libro")
+                {
+                    mensaje = control.ModificarObjeto(arbolLibros, Datos);
+                }
+                if (this.ObjetoSeleccionado == "Lector")
+                {
+                    mensaje = control.ModificarObjeto(arbolLectores, Datos);
+                }
+                if (this.ObjetoSeleccionado == "Prestamo")
+                {
+                    mensaje = control.ModificarObjeto(arbolPrestamos, Datos);
+                }
+            }
+
+                MessageBox.Show(mensaje[0], mensaje[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (mensaje[1] == "Exitoso")
+            {
+                foreach(TextBox txt in texts)
+                {
+                    txt.Clear();
+                }
+            }        
         }
     }
 }

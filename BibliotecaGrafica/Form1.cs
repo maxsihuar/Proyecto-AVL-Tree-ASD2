@@ -1,10 +1,19 @@
+using Clases;
+
 namespace BibliotecaGrafica
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        public cArbolAVL arbolLibros { get; set; }
+        public cArbolAVL arbolLectores { get; set; }
+        public cArbolAVL arbolPrestamos { get; set; }
+
+        public Form1(cArbolAVL arbolLibro ,cArbolAVL arbolLectore, cArbolAVL arbolPrestamo)
         {
             InitializeComponent();
+            this.arbolLibros = arbolLibro;
+            this.arbolLectores = arbolLectore;
+            this.arbolPrestamos = arbolPrestamo;
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -85,12 +85,12 @@ namespace Clases
             {
                 return new cNodoAVL(dato);
             }
-
-            if (dato.Id.GetHashCode() < nodo.dato.Id.GetHashCode())
+            int i = string.Compare(dato.Id, nodo.dato.Id);
+            if (i<0)
             {
                 nodo.hijoIzquierdo = _Insertar(nodo.hijoIzquierdo, dato);
             }
-            else if (dato.Id.GetHashCode() > nodo.dato.Id.GetHashCode())
+            else if (i>0)
             {
                 nodo.hijoDerecho = _Insertar(nodo.hijoDerecho, dato);
             }
@@ -120,11 +120,13 @@ namespace Clases
                 return null;
             }
 
-            if (id.GetHashCode() < nodo.dato.Id.GetHashCode())
+            int i = string.Compare(id, nodo.dato.Id);
+
+            if (i < 0)
             {
                 nodo.hijoIzquierdo = this._Eliminar(nodo.hijoIzquierdo, id);
             }
-            else if (id.GetHashCode() > nodo.dato.Id.GetHashCode())
+            else if (i > 0)
             {
                 nodo.hijoDerecho = this._Eliminar(nodo.hijoDerecho, id);
             }
@@ -152,11 +154,16 @@ namespace Clases
         {
             if (nodo == null) return false;
 
-            if (nodo.dato.Comparar(id))
+            int i = string.Compare(nodo.dato.Id, id);
+
+            if (i==0)
             {
                 return true;
             }
-            else if (nodo.dato.Id.GetHashCode() > id.GetHashCode())
+
+            
+
+            else if (i > 0)
             {
                 return _Buscar(nodo.hijoIzquierdo, id);
             }
@@ -164,20 +171,20 @@ namespace Clases
             {
                 return _Buscar(nodo.hijoDerecho, id);
             }
-
-            return false;
         }
 
         private void _Modificar(cNodoAVL nodo, string id, cObjeto dato)
         {
             if (nodo == null) return;
 
-            if (nodo.dato.Comparar(id))
+            int i = string.Compare(nodo.dato.Id, id);
+
+            if (i==0)
             {
                 nodo.dato = dato;
                 return;
             }
-            else if (nodo.dato.Id.GetHashCode() > id.GetHashCode())
+            else if (i >0)
             {
                 _Modificar(nodo.hijoIzquierdo, id, dato);
             }

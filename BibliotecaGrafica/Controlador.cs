@@ -1,9 +1,4 @@
-﻿using System;
-using Clases;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Clases;
 
 
 // 101 Elemento Existe
@@ -12,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaGrafica
 {
-    internal class Controlador
+    public class Controlador
     {
         public int ValidarId(cArbolAVL arbol, string id)
         {
@@ -26,97 +21,88 @@ namespace BibliotecaGrafica
             }
         }
 
-        public List<string> InsertarObjeto(cArbolAVL arbol)
+        public List<string> InsertarObjeto(cArbolAVL arbol, List<string> datos)
         {
-            List<string> list = new List<string>();
-            string id;
-            cObjeto dato;
+            if(datos.Count() == 0)
+            {
+                return ["Error al cargar los datos", "Error"];
+            }
+
+            if(arbol.Tipo == "Libro")
+            {
+                cLibro dato = new cLibro();
+                dato.Id = datos[0];
+                dato.Titulo = datos[1];
+                dato.Autor = datos[2];
+                dato.Anio = datos[3];
+                dato.Especialidad = datos[4];
+                arbol.Insertar(dato);
+            }
+            if (arbol.Tipo == "Lector")
+            {
+                cLector dato = new cLector();
+                dato.Id = datos[0];
+                dato.AP = datos[1];
+                dato.AM = datos[2];
+                dato.Nombre = datos[3];
+                dato.Condicion = datos[4];
+                dato.Email = datos[5];
+                arbol.Insertar(dato);
+            }
+            if (arbol.Tipo == "Prestamo")
+            {
+                cPrestamo dato = new cPrestamo();
+                dato.Id = datos[0];
+                dato.IdLector = datos[1];
+                dato.IdLibro = datos[2];
+                dato.FechaPrestamo = datos[3];
+                dato.FechaDevolucion = datos[4];
+                arbol.Insertar(dato);
+            }
+
+            return ["Agregado Correctamente", "Exitoso"];
+        }
+
+        public List<string> ModificarObjeto(cArbolAVL arbol, List<string> datos)
+        {
+            if (datos.Count() == 0)
+            {
+                return ["Error al cargar los datos", "Error"];
+            }
 
             if (arbol.Tipo == "Libro")
             {
-                dato = new cLibro();
-
-                Console.Write("Ingrese el ID del libro: ");
-                id = Console.ReadLine();
+                cLibro dato = new cLibro();
+                dato.Id = datos[0];
+                dato.Titulo = datos[1];
+                dato.Autor = datos[2];
+                dato.Anio = datos[3];
+                dato.Especialidad = datos[4];
+                arbol.Modificar(dato.Id,dato);
             }
-            else
+            if (arbol.Tipo == "Lector")
             {
-                dato = new cLector();
-                Console.Write("Ingrese el ID del lector: ");
-                id = Console.ReadLine();
+                cLector dato = new cLector();
+                dato.Id = datos[0];
+                dato.AP = datos[1];
+                dato.AM = datos[2];
+                dato.Nombre = datos[3];
+                dato.Condicion = datos[4];
+                dato.Email = datos[5];
+                arbol.Modificar(dato.Id,dato);
             }
-
-
-            int resultado = ValidarId(arbol, id);
-
-            if (resultado == 102)
+            if (arbol.Tipo == "Prestamo")
             {
-                dato.Pedir();
-                dato.Id = id;
-                arbol.Insertar(dato);
-                list.Add("101");
-                list.Add("Objeto insertado con éxito.");
-            }
-            else
-            {
-                list.Add("102");
-                list.Add("ERROR : El objeto ya existe");
+                cPrestamo dato = new cPrestamo();
+                dato.Id = datos[0];
+                dato.IdLector = datos[1];
+                dato.IdLibro = datos[2];
+                dato.FechaPrestamo = datos[3];
+                dato.FechaDevolucion = datos[4];
+                arbol.Modificar(dato.Id,dato);
             }
 
-            return list;
-        }
-
-        public void InsertarPrestamo(cArbolAVL arbol, cArbolAVL arbolLibros, cArbolAVL arbolLector)
-        {
-            cPrestamo dato = new cPrestamo();
-
-            Console.Write("Ingrese el ID del préstamo: ");
-            string id = Console.ReadLine();
-
-            int resultadoLibro = ValidarId(arbolLibros, dato.IdLibro);
-            int reultadoLector = ValidarId(arbolLector, dato.IdLector);
-
-            int resultado = ValidarId(arbol, id);
-
-            if (resultado == 102 && resultadoLibro == 101 && reultadoLector == 101)
-            {
-                dato.Pedir();
-                dato.Id = id;
-                arbol.Insertar(dato);
-                Console.WriteLine("Objeto insertado con éxito.");
-            }
-            else if (resultadoLibro == 102)
-            {
-                Console.WriteLine("ERROR : El libro no existe");
-            }
-            else if (reultadoLector == 102)
-            {
-                Console.WriteLine("ERROR : El lector no existe");
-            }
-            else
-            {
-                Console.WriteLine("ERROR : El objeto ya existe");
-            }
-        }
-
-        public void ModificarObjeto(cArbolAVL arbol)
-        {
-            cObjeto dato = new cObjeto();
-
-            Console.Write("Ingrese el ID del objeto a modificar: ");
-            string id = Console.ReadLine();
-
-            int resultado = ValidarId(arbol, id);
-            if (resultado == 101)
-            {
-                dato.Pedir();
-                dato.Id = id;
-                arbol.Modificar(id, dato);
-            }
-            else
-            {
-                Console.WriteLine("ERROR : El objeto no existe");
-            }
+            return ["Agregado Correctamente", "Exitoso"];
         }
 
         public void EliminarObjeto(cArbolAVL arbol)
@@ -135,22 +121,31 @@ namespace BibliotecaGrafica
             }
         }
 
-        public void BuscarObjeto(cArbolAVL arbol)
+        public List<string> BuscarObjeto(cArbolAVL arbol, string id)
         {
-            Console.Write("Ingrese el ID del objeto a buscar: ");
-            string id = Console.ReadLine();
-            if (arbol.Buscar(id))
-            {
-                Console.WriteLine("El objeto existe:");
-                List<cObjeto> lista = arbol.InOrden();
-                cObjeto encontrado = lista.FirstOrDefault(o => o.Id == id);
-                encontrado.Mostrar();
+            List<cObjeto> lista = arbol.InOrden();
+            cObjeto encontrado = lista.FirstOrDefault(o => o.Id == id);
 
+            if (encontrado == null)
+            {
+                return ["Error al encontrar el elemento", "Error"];
             }
             else
             {
-                Console.WriteLine("El objeto no existe");
+                if (encontrado is cLibro libro)
+                {
+                    return [libro.Id, libro.Titulo, libro.Autor, libro.Anio, libro.Especialidad, "Exitoso"];
+                }
+                else if (encontrado is cLector lector)
+                {
+                    return [lector.Id, lector.AP, lector.AM, lector.Nombre, lector.Condicion, lector.Email, "Exitoso"];
+                }
+                else if (encontrado is cPrestamo prestamo)
+                {
+                    return [prestamo.Id, prestamo.IdLector, prestamo.IdLibro, prestamo.FechaPrestamo, prestamo.FechaDevolucion, "Exitoso"];
+                }
             }
+            return ["Error Desconocido", "Error"];
         }
 
         #region ************Reportes*****************
