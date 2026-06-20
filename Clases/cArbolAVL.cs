@@ -24,7 +24,7 @@ namespace Clases
 
         private int ObtenerFE(cNodoAVL nodo)
         {
-            return nodo == null ? 0 : Altura(nodo.hijoIzquierdo) - Altura(nodo.hijoDerecho);
+            return nodo == null ? 0 : Altura(nodo.hijoDerecho) - Altura(nodo.hijoIzquierdo);
         }
 
         // Rotaciones
@@ -151,11 +151,11 @@ namespace Clases
             }
             else if (nodo.dato.Id.GetHashCode() > id.GetHashCode())
             {
-                _Buscar(nodo.hijoIzquierdo, id);
+                return _Buscar(nodo.hijoIzquierdo, id);
             }
             else
             {
-                _Buscar(nodo.hijoDerecho, id);
+                return _Buscar(nodo.hijoDerecho, id);
             }
 
             return false;
@@ -180,6 +180,16 @@ namespace Clases
             }
         }
 
+        private void _InOrden(cNodoAVL nodo, List<cObjeto> lista)
+        {
+            if (nodo != null)
+            {
+                _InOrden(nodo.hijoIzquierdo, lista);
+                lista.Add(nodo.dato);
+                _InOrden(nodo.hijoDerecho, lista);
+            }
+        }
+
         #endregion
 
         public void Insertar(cObjeto dato)
@@ -199,6 +209,13 @@ namespace Clases
         public void Modificar(string id, cObjeto dato)
         {
             _Modificar(raiz, id, dato);
+        }
+
+        public List<cObjeto> InOrden()
+        {
+            List<cObjeto> lista = new List<cObjeto>();
+            _InOrden(raiz, lista);
+            return lista;
         }
     }
 }

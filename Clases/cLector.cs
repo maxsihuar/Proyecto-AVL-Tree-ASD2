@@ -35,12 +35,7 @@ namespace Clases
         }
         public void MostrarLector()
         {
-            base.Mostrar();
-            Console.WriteLine("Apellido Paterno: " + AP);
-            Console.WriteLine("Apellido Materno: " + AM);
-            Console.WriteLine("Nombre: " + Nombre);
-            Console.WriteLine("Condición: " + Condicion);
-            Console.WriteLine("Email: " + Email);
+            Console.WriteLine($"{base.Id,-8} | {AP,-18} | {AM,-18} | {Nombre,-20} | {Condicion,-12} | {Email,-25}");
         }
         public void ModificarLector(string id, string ap, string am, string nombre, string condicion, string email)
         {

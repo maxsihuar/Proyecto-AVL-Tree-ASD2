@@ -9,7 +9,7 @@ namespace Clases
     public class cPrestamo : cObjeto
     {
         public string IdLector { get; set; }
-        public String IdLibro { get; set; }
+        public string IdLibro { get; set; }
         public string FechaPrestamo { get; set; }
         public string FechaDevolucion { get; set; }
 
@@ -35,10 +35,8 @@ namespace Clases
         public override void Mostrar()
         {
             base.Mostrar();
-            Console.WriteLine("ID Lector: " + IdLector);
-            Console.WriteLine("ID Libro: " + IdLibro);
-            Console.WriteLine("Fecha de Préstamo: " + FechaPrestamo);
-            Console.WriteLine("Fecha de Devolución: " + FechaDevolucion);
+
+            Console.WriteLine($"{IdLector,-10} |{IdLibro,-10} | {FechaPrestamo,-12} | {FechaDevolucion}");
         }
         public void Modificar(string id, string idLector, string idLibro, string fechaPrestamo, string fechaDevolucion)
         {
