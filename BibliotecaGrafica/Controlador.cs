@@ -197,8 +197,75 @@ namespace BibliotecaGrafica
             }
         }
 
+        public void ReporteListarPorEspecialidad(cArbolAVL arbol)
 
+        {
+            List<cObjeto> lista = arbol.InOrden();
+            Console.Write("Ingrese la especialidad a listar: ");
+            string especialidad = Console.ReadLine();
+            Console.WriteLine(especialidad);
+            Console.WriteLine(new string('-', 112));
+
+            Console.WriteLine($"{"ID",-8} | {"Título",-35} | {"Autor",-25} | {"Año",-6} | {"Especialidad"}");
+
+            Console.WriteLine(new string('-', 112));
+
+            foreach (cObjeto x in lista)
+            {
+                if (x is cLibro libro)
+                {
+                    if (libro.Especialidad == especialidad)
+                    {
+                        libro.Mostrar();
+                    }
+                }
+            }
+
+        }
+        public void ReporteListarPrestamosFechadeDev(cArbolAVL arbol)
+        {
+            List<cObjeto> lista = arbol.InOrden();
+
+            Console.WriteLine(new string('-', 75));
+
+            Console.WriteLine($"{"ID Pres.",-8} | {"ID Lector",-10} |{"ID Libro",-10} | {"F. Préstamo",-12} | {"F. Devolución"}");
+
+            Console.WriteLine(new string('-', 75));
+
+            foreach (cObjeto x in lista)
+            {
+                if (x is cPrestamo prestamo)
+                {
+                    if (prestamo.FechaDevolucion == null)
+                    {
+                        prestamo.Mostrar();
+                    }
+                }
+
+            }
+
+        }
+        public void ReporteListaPendientesdeDevolucion(cArbolAVL arbol)
+        {
+            List<cObjeto> lista = arbol.InOrden();
+            Console.WriteLine(new string('-', 75));
+
+            Console.WriteLine($"{"ID Pres.",-8} | {"ID Lector",-10} |{"ID Libro",-10} | {"F. Préstamo",-12} | {"F. Devolución"}");
+
+            Console.WriteLine(new string('-', 75));
+            foreach (cObjeto x in lista)
+            {
+                if (x is cPrestamo prestamo)
+                {
+                    if (prestamo.FueraDePlazo())
+                    {
+                        prestamo.Mostrar();
+                    }
+                }
+            }
+        }
         #endregion 
+
 
     }
 }
