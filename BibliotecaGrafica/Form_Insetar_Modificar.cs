@@ -360,6 +360,16 @@ namespace BibliotecaGrafica
                 }
                 if (this.ObjetoSeleccionado == "Prestamo")
                 {
+                    if (control.ValidarId(arbolLectores,Datos[1]) == 102)
+                    {
+                        errorProvider1.SetError(textBox1,"El Lector no existe");
+                        return;
+                    }
+                    if(control.ValidarId(arbolLibros, Datos[2]) == 102)
+                    {
+                        errorProvider1.SetError(textBox1, "El Libro no existe");
+                        return;
+                    }
                     mensaje = control.InsertarObjeto(arbolPrestamos, Datos);
                 }
             }

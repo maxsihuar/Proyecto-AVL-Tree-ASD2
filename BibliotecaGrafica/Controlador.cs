@@ -132,9 +132,9 @@ namespace BibliotecaGrafica
                 dato.FechaPrestamo = datos[3];
                 dato.FechaDevolucion = datos[4];
                 if (datos.Count < 4 ||
-    string.IsNullOrWhiteSpace(datos[1]) ||
-    string.IsNullOrWhiteSpace(datos[2]) ||
-    string.IsNullOrWhiteSpace(datos[3]))
+    !string.IsNullOrWhiteSpace(datos[1]) ||
+    !string.IsNullOrWhiteSpace(datos[2]) ||
+    !string.IsNullOrWhiteSpace(datos[3]))
                 {
                     return ["Celdas vacías no permitidas", "Error"];
                 }

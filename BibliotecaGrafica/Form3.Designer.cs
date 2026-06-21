@@ -92,11 +92,11 @@
             lb_Titulo.Anchor = AnchorStyles.None;
             lb_Titulo.AutoSize = true;
             lb_Titulo.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lb_Titulo.Location = new Point(122, 13);
+            lb_Titulo.Location = new Point(144, 37);
             lb_Titulo.Name = "lb_Titulo";
-            lb_Titulo.Size = new Size(556, 81);
+            lb_Titulo.Size = new Size(518, 81);
             lb_Titulo.TabIndex = 7;
-            lb_Titulo.Text = "Este titulo cambiara";
+            lb_Titulo.Text = "Menu de Reportes";
             // 
             // Form3
             // 
