@@ -14,6 +14,8 @@ namespace BibliotecaGrafica
 {
     public partial class Form_Reportes : Form
     {
+
+        private string TipoOperacion { get; set; }
         private string ObjetoSeleccionado { get; set; }
         private DataTable tabla;
 
@@ -21,20 +23,20 @@ namespace BibliotecaGrafica
         public cArbolAVL arbolLibros { get; set; }
         public cArbolAVL arbolLectores { get; set; }
         public cArbolAVL arbolPrestamos { get; set; }
-        public Form1 form_Anterior { get; set; }
+        public Form3 form_Anterior { get; set; }
 
         public Controlador control = new Controlador();
 
-        public Form_Reportes(string Objeto, Form1 Anterior)
+        public Form_Reportes(string Tipo, Form3 Anterior)
         {
-            ObjetoSeleccionado = Objeto;
+            TipoOperacion = Tipo;
             form_Anterior = Anterior;
             arbolLibros = Anterior.arbolLibros;
             arbolLectores = Anterior.arbolLectores;
             arbolPrestamos = Anterior.arbolPrestamos;
 
             InitializeComponent();
-            lb_Titulo.Text = $"LISTA DE {ObjetoSeleccionado.ToUpper()}";
+            lb_Titulo.Text = $"REPORTE DE {TipoOperacion.ToUpper()}";
             lb_Titulo.Location = new Point((this.ClientSize.Width - lb_Titulo.Size.Width) / 2, 40);
             Iniciar();
             Listar();
