@@ -31,6 +31,7 @@
             btn_Regresar = new Button();
             dataGridView1 = new DataGridView();
             lb_Titulo = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             btn_Regresar.TabIndex = 12;
             btn_Regresar.Text = "Regresar";
             btn_Regresar.UseVisualStyleBackColor = true;
-            btn_Regresar.Click += this.btn_Regresar_Click;
+            btn_Regresar.Click += btn_Regresar_Click;
             // 
             // dataGridView1
             // 
@@ -53,7 +54,7 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(15, 123);
+            dataGridView1.Location = new Point(15, 133);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(770, 240);
@@ -69,11 +70,26 @@
             lb_Titulo.TabIndex = 10;
             lb_Titulo.Text = "Listar";
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.Anchor = AnchorStyles.None;
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 533F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 174F));
+            tableLayoutPanel1.Location = new Point(15, 100);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(770, 27);
+            tableLayoutPanel1.TabIndex = 13;
+            // 
             // Form_Reportes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(btn_Regresar);
             Controls.Add(dataGridView1);
             Controls.Add(lb_Titulo);
@@ -89,5 +105,6 @@
         private Button btn_Regresar;
         private DataGridView dataGridView1;
         private Label lb_Titulo;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

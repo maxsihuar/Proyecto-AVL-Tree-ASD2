@@ -35,7 +35,19 @@ namespace BibliotecaGrafica
             arbolLectores = Anterior.arbolLectores;
             arbolPrestamos = Anterior.arbolPrestamos;
 
-            InitializeComponent();
+            if(TipoOperacion == "por Especialidad")
+            {
+                ObjetoSeleccionado = "Libro";
+            }else if(TipoOperacion == "de Prestamo sin Devolucion")
+            {
+                ObjetoSeleccionado = "Prestamo";
+            }
+            else
+            {
+                ObjetoSeleccionado = "Lector";
+            }
+
+                InitializeComponent();
             lb_Titulo.Text = $"REPORTE DE {TipoOperacion.ToUpper()}";
             lb_Titulo.Location = new Point((this.ClientSize.Width - lb_Titulo.Size.Width) / 2, 40);
             Iniciar();
@@ -114,23 +126,42 @@ namespace BibliotecaGrafica
 
         private void Listar()
         {
-            if (ObjetoSeleccionado == "Libro")
+            if (TipoOperacion == "por Especialidad")
             {
-                List<List<string>> datos = control.ReporteGeneral(arbolLibros);
+                Label lb1 = new Label();
+                lb1.Text = "Especialidad";
+                lb1.Width = 50; lb1.Height = 30; lb1.Location = new Point(10, 10);
+                lb1.AutoSize = true; lb1.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                tableLayoutPanel1.Controls.Add(lb1);
+
+                TextBox txtTitulo = new TextBox();
+                txtTitulo.Width = 400; txtTitulo.Height = 30;
+                tableLayoutPanel1.Controls.Add(txtTitulo);
+
+                Button btn_Enviar = new Button();
+                btn_Enviar.Text = "Cargar";
+                btn_Enviar.Width = 100; btn_Enviar.Height = 30; btn_Enviar.Location = new Point(10, 10);
+                btn_Enviar.Click += (sender, e) => btn_EnviarP(sender, e, txtTitulo);
+                tableLayoutPanel1.Controls.Add(btn_Enviar);
+
+            }
+            if (TipoOperacion == "de Prestamo sin Devolucion")
+            {
+                List<List<string>> datos = control.ReporteListarPrestamosFechadeDev(arbolPrestamos);
                 foreach (List<string> l in datos)
                 {
                     DataRow fila = tabla.NewRow();
                     fila["Id"] = l[0];
-                    fila["Titulo"] = l[1];
-                    fila["Autor"] = l[2];
-                    fila["Año"] = l[3];
-                    fila["Especialidad"] = l[4];
+                    fila["IdLector"] = l[1];
+                    fila["IdLibro"] = l[2];
+                    fila["Fecha de Prestamo"] = l[3];
+                    fila["Fecha de Devolucion"] = l[4];
                     tabla.Rows.Add(fila);
                 }
             }
-            if (ObjetoSeleccionado == "Lector")
+            if (ObjetoSeleccionado == "Prestamo")
             {
-                List<List<string>> datos = control.ReporteGeneral(arbolLectores);
+                List<List<string>> datos = control.ReporteListaPendientesdeDevolucion(arbolPrestamos, arbolLectores);
                 foreach (List<string> l in datos)
                 {
                     DataRow fila = tabla.NewRow();
@@ -143,23 +174,25 @@ namespace BibliotecaGrafica
                     tabla.Rows.Add(fila);
                 }
             }
-            if (ObjetoSeleccionado == "Prestamo")
-            {
-                List<List<string>> datos = control.ReporteGeneral(arbolPrestamos);
-                foreach (List<string> l in datos)
-                {
-                    DataRow fila = tabla.NewRow();
-                    fila["Id"] = l[0];
-                    fila["IdLector"] = l[1];
-                    fila["IdLibro"] = l[2];
-                    fila["Fecha de Prestamo"] = l[3];
-                    fila["Fecha de Devolucion"] = l[4];
-                    tabla.Rows.Add(fila);
-                }
-            }
 
         }
 
+        private void btn_EnviarP(object sender, EventArgs e, TextBox txtTitulo)
+        {
+            tabla.Rows.Clear();
+            string especialidad = txtTitulo.Text;
+            List<List<string>> datos = control.ReporteListarPorEspecialidad(arbolLibros, especialidad);
+            foreach (List<string> l in datos)
+            {
+                DataRow fila = tabla.NewRow();
+                fila["Id"] = l[0];
+                fila["Titulo"] = l[1];
+                fila["Autor"] = l[2];
+                fila["Año"] = l[3];
+                fila["Especialidad"] = l[4];
+                tabla.Rows.Add(fila);
+            }
+        }
 
         private void btn_Regresar_Click(object sender, EventArgs e)
         {

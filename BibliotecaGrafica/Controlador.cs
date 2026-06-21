@@ -1,4 +1,5 @@
 ﻿using Clases;
+using System.Collections.Generic;
 
 
 // 101 Elemento Existe
@@ -205,72 +206,77 @@ namespace BibliotecaGrafica
             return ListaF;
         }
 
-        public void ReporteListarPorEspecialidad(cArbolAVL arbol)
-
+        public List<List<string>> ReporteListarPorEspecialidad(cArbolAVL arbol, string especialidad)
         {
+            List<List<string>> datos = new List<List<string>>();
             List<cObjeto> lista = arbol.InOrden();
-            Console.Write("Ingrese la especialidad a listar: ");
-            string especialidad = Console.ReadLine();
-            Console.WriteLine(especialidad);
-            Console.WriteLine(new string('-', 112));
 
-            Console.WriteLine($"{"ID",-8} | {"Título",-35} | {"Autor",-25} | {"Año",-6} | {"Especialidad"}");
-
-            Console.WriteLine(new string('-', 112));
-
-            foreach (cObjeto x in lista)
+            foreach (cLibro libro in lista)
             {
-                if (x is cLibro libro)
+                if (libro.Especialidad == especialidad)
                 {
-                    if (libro.Especialidad == especialidad)
-                    {
-                        libro.Mostrar();
-                    }
+                    List<string> dato = new List<string>();
+                    dato.Add(libro.Id);
+                    dato.Add(libro.Titulo);
+                    dato.Add(libro.Autor);
+                    dato.Add(libro.Anio);
+                    dato.Add(libro.Especialidad);
+                    datos.Add(dato);
                 }
             }
+
+            return datos;
 
         }
-        public void ReporteListarPrestamosFechadeDev(cArbolAVL arbol)
+        public List<List<string>> ReporteListarPrestamosFechadeDev(cArbolAVL arbol)
         {
             List<cObjeto> lista = arbol.InOrden();
+            List<List<string>> datos = new List<List<string>>();
 
-            Console.WriteLine(new string('-', 75));
-
-            Console.WriteLine($"{"ID Pres.",-8} | {"ID Lector",-10} |{"ID Libro",-10} | {"F. Préstamo",-12} | {"F. Devolución"}");
-
-            Console.WriteLine(new string('-', 75));
-
-            foreach (cObjeto x in lista)
+            foreach (cPrestamo prestamo in lista)
             {
-                if (x is cPrestamo prestamo)
-                {
-                    if (prestamo.FechaDevolucion == null)
-                    {
-                        prestamo.Mostrar();
-                    }
+                if (prestamo.FechaDevolucion == null  || prestamo.FechaDevolucion.Trim() == "")
+                 {
+                    List<string> dato = new List<string>();
+                    dato.Add(prestamo.Id);
+                    dato.Add(prestamo.IdLector);
+                    dato.Add(prestamo.IdLibro);
+                    dato.Add(prestamo.FechaPrestamo);
+                    dato.Add("Sin Fecha");
+                    datos.Add(dato);
                 }
-
             }
-
+            return datos;
         }
-        public void ReporteListaPendientesdeDevolucion(cArbolAVL arbol)
+        public List<List<string>> ReporteListaPendientesdeDevolucion(cArbolAVL arbolPrestamo, cArbolAVL arbolLectores)
         {
-            List<cObjeto> lista = arbol.InOrden();
-            Console.WriteLine(new string('-', 75));
+            List<List<string>> ListaF = new List<List<string>>();
+            List<cObjeto> lista = arbolPrestamo.InOrden();
+            List<cObjeto> listaL = arbolLectores.InOrden();
 
-            Console.WriteLine($"{"ID Pres.",-8} | {"ID Lector",-10} |{"ID Libro",-10} | {"F. Préstamo",-12} | {"F. Devolución"}");
-
-            Console.WriteLine(new string('-', 75));
-            foreach (cObjeto x in lista)
+            foreach (cPrestamo prestamo in lista)
             {
-                if (x is cPrestamo prestamo)
+                if (prestamo.FueraDePlazo())
                 {
-                    if (prestamo.FueraDePlazo())
+                    string id = prestamo.IdLector;
+                    foreach(cLector lector in listaL)
                     {
-                        prestamo.Mostrar();
+                        if(lector.Id == id)
+                        {
+                            List<string> datos = new List<string>();
+                            datos.Add(lector.Id);
+                            datos.Add(lector.AP);
+                            datos.Add(lector.AM);
+                            datos.Add(lector.Nombre);
+                            datos.Add(lector.Condicion);
+                            datos.Add(lector.Email);
+                            ListaF.Add(datos);
+                        }
                     }
                 }
             }
+
+            return ListaF;
         }
         #endregion 
 
