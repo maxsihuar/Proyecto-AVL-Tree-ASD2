@@ -1,6 +1,6 @@
 ﻿namespace BibliotecaGrafica
 {
-    partial class Form_Eliminar
+    partial class Form_Buscar : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             textBox1 = new TextBox();
             Verificar = new Button();
             errorProvider1 = new ErrorProvider(components);
-            Eliminar = new Button();
+            Buscar = new Button();
             Regresar = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
@@ -45,18 +45,18 @@
             Titulo.Anchor = AnchorStyles.None;
             Titulo.AutoSize = true;
             Titulo.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Titulo.Location = new Point(284, 28);
+            Titulo.Location = new Point(269, 51);
             Titulo.Name = "Titulo";
-            Titulo.Size = new Size(219, 60);
+            Titulo.Size = new Size(151, 60);
             Titulo.TabIndex = 0;
-            Titulo.Text = "ELIMINAR";
+            Titulo.Text = "Buscar";
             // 
             // Id
             // 
             Id.Anchor = AnchorStyles.None;
             Id.AutoSize = true;
             Id.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Id.Location = new Point(63, 147);
+            Id.Location = new Point(48, 170);
             Id.Name = "Id";
             Id.Size = new Size(29, 28);
             Id.TabIndex = 2;
@@ -66,20 +66,18 @@
             // 
             textBox1.Anchor = AnchorStyles.None;
             textBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(108, 144);
+            textBox1.Location = new Point(93, 167);
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(457, 30);
             textBox1.TabIndex = 1;
-            textBox1.TextChanged += textBox1_TextChanged;
-            textBox1.Validating += textBox1_Validating;
             // 
             // Verificar
             // 
             Verificar.Anchor = AnchorStyles.None;
             Verificar.AutoSize = true;
             Verificar.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Verificar.Location = new Point(589, 139);
+            Verificar.Location = new Point(574, 162);
             Verificar.Margin = new Padding(3, 4, 3, 4);
             Verificar.Name = "Verificar";
             Verificar.Size = new Size(149, 47);
@@ -92,26 +90,26 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
-            // Eliminar
+            // Buscar
             // 
-            Eliminar.Anchor = AnchorStyles.None;
-            Eliminar.AutoSize = true;
-            Eliminar.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Eliminar.Location = new Point(152, 442);
-            Eliminar.Margin = new Padding(3, 4, 3, 4);
-            Eliminar.Name = "Eliminar";
-            Eliminar.Size = new Size(194, 53);
-            Eliminar.TabIndex = 5;
-            Eliminar.Text = "Eliminar";
-            Eliminar.UseVisualStyleBackColor = true;
-            Eliminar.Click += Eliminar_Click;
+            Buscar.Anchor = AnchorStyles.None;
+            Buscar.AutoSize = true;
+            Buscar.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Buscar.Location = new Point(139, 465);
+            Buscar.Margin = new Padding(3, 4, 3, 4);
+            Buscar.Name = "Buscar";
+            Buscar.Size = new Size(194, 53);
+            Buscar.TabIndex = 5;
+            Buscar.Text = "Buscar";
+            Buscar.UseVisualStyleBackColor = true;
+            Buscar.Click += Buscar_Click;
             // 
             // Regresar
             // 
             Regresar.Anchor = AnchorStyles.None;
             Regresar.AutoSize = true;
             Regresar.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Regresar.Location = new Point(426, 442);
+            Regresar.Location = new Point(419, 465);
             Regresar.Margin = new Padding(3, 4, 3, 4);
             Regresar.Name = "Regresar";
             Regresar.Size = new Size(194, 53);
@@ -127,7 +125,7 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 533F));
-            tableLayoutPanel1.Location = new Point(63, 194);
+            tableLayoutPanel1.Location = new Point(33, 217);
             tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 6;
@@ -137,25 +135,24 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.Size = new Size(675, 240);
+            tableLayoutPanel1.Size = new Size(715, 240);
             tableLayoutPanel1.TabIndex = 4;
             // 
-            // Form_Eliminar
+            // Form_Buscar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(812, 507);
+            ClientSize = new Size(782, 553);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(Regresar);
-            Controls.Add(Eliminar);
+            Controls.Add(Buscar);
             Controls.Add(Verificar);
             Controls.Add(textBox1);
             Controls.Add(Id);
             Controls.Add(Titulo);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "Form_Eliminar";
-            Text = "Form_Eliminar";
-            Load += textBox1_TextChanged;
+            Name = "Form_Buscar";
+            Text = "Form_Buscar";
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -167,7 +164,7 @@
         private Label Id;
         private TextBox textBox1;
         private Button Verificar;
-        private Button Eliminar;
+        private Button Buscar;
         private Button Regresar;
         private TableLayoutPanel tableLayoutPanel1;
         private ErrorProvider errorProvider1;

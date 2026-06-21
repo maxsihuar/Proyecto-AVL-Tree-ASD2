@@ -58,7 +58,6 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(770, 240);
             dataGridView1.TabIndex = 11;
-            dataGridView1.CellContentClick += this.dataGridView1_CellContentClick;
             // 
             // lb_Titulo
             // 
@@ -69,7 +68,6 @@
             lb_Titulo.Size = new Size(136, 62);
             lb_Titulo.TabIndex = 10;
             lb_Titulo.Text = "Listar";
-            lb_Titulo.Click += lb_Titulo_Click;
             // 
             // Form_Reportes
             // 

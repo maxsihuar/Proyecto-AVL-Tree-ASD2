@@ -65,7 +65,7 @@ namespace BibliotecaGrafica
 
         private void btn_Reportes_Click(object sender, EventArgs e)
         {
-            Form_Reportes form_Reportes = new Form_Reportes();
+           //Form_Reportes form_Reportes = new Form_Reportes();
         }
     }
 }

@@ -73,19 +73,26 @@ namespace BibliotecaGrafica
             form_Eliminar.Show();
             this.Hide();
         }
-
         private void btn_Listar_Click(object sender, EventArgs e)
         {
             Form_Listar_Reportes form_Listar = new Form_Listar_Reportes(ObjetoSeleccionado, this);
             form_Listar.FormClosed += (s, args) => Application.Exit();
             form_Listar.StartPosition = FormStartPosition.Manual;
             form_Listar.Location = this.Location;
-            form_Listar.Size =this.Size;
+            form_Listar.Size = this.Size;
             form_Listar.Show();
             this.Hide();
         }
-
-
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            Form_Buscar form_Buscar = new Form_Buscar(ObjetoSeleccionado, this);
+            form_Buscar.FormClosed += (s, args) => Application.Exit();
+            form_Buscar.StartPosition = FormStartPosition.Manual;
+            form_Buscar.Location = this.Location;
+            form_Buscar.Size = this.Size;
+            form_Buscar.Show();
+            this.Hide();
+        }
         private void btn_Salir_Click(object sender, EventArgs e)
         {
             form_Anterior.StartPosition = FormStartPosition.Manual;
