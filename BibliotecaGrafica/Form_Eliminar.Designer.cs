@@ -47,9 +47,9 @@ namespace BibliotecaGrafica
             Titulo.Anchor = AnchorStyles.None;
             Titulo.AutoSize = true;
             Titulo.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Titulo.Location = new Point(457, 31);
+            Titulo.Location = new Point(284, 28);
             Titulo.Name = "Titulo";
-            Titulo.Size = new Size(173, 47);
+            Titulo.Size = new Size(219, 60);
             Titulo.TabIndex = 0;
             Titulo.Text = "ELIMINAR";
             // 
@@ -58,9 +58,9 @@ namespace BibliotecaGrafica
             Id.Anchor = AnchorStyles.None;
             Id.AutoSize = true;
             Id.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Id.Location = new Point(263, 120);
+            Id.Location = new Point(63, 147);
             Id.Name = "Id";
-            Id.Size = new Size(23, 21);
+            Id.Size = new Size(29, 28);
             Id.TabIndex = 2;
             Id.Text = "Id";
             // 
@@ -68,9 +68,10 @@ namespace BibliotecaGrafica
             // 
             textBox1.Anchor = AnchorStyles.None;
             textBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(303, 118);
+            textBox1.Location = new Point(108, 144);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(400, 26);
+            textBox1.Size = new Size(457, 30);
             textBox1.TabIndex = 1;
             textBox1.TextChanged += textBox1_TextChanged;
             textBox1.Validating += textBox1_Validating;
@@ -80,9 +81,10 @@ namespace BibliotecaGrafica
             Verificar.Anchor = AnchorStyles.None;
             Verificar.AutoSize = true;
             Verificar.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Verificar.Location = new Point(724, 114);
+            Verificar.Location = new Point(589, 139);
+            Verificar.Margin = new Padding(3, 4, 3, 4);
             Verificar.Name = "Verificar";
-            Verificar.Size = new Size(130, 35);
+            Verificar.Size = new Size(149, 47);
             Verificar.TabIndex = 3;
             Verificar.Text = "Validar";
             Verificar.UseVisualStyleBackColor = true;
@@ -97,9 +99,10 @@ namespace BibliotecaGrafica
             Eliminar.Anchor = AnchorStyles.None;
             Eliminar.AutoSize = true;
             Eliminar.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Eliminar.Location = new Point(341, 376);
+            Eliminar.Location = new Point(152, 442);
+            Eliminar.Margin = new Padding(3, 4, 3, 4);
             Eliminar.Name = "Eliminar";
-            Eliminar.Size = new Size(170, 40);
+            Eliminar.Size = new Size(194, 53);
             Eliminar.TabIndex = 5;
             Eliminar.Text = "Eliminar";
             Eliminar.UseVisualStyleBackColor = true;
@@ -110,9 +113,10 @@ namespace BibliotecaGrafica
             Regresar.Anchor = AnchorStyles.None;
             Regresar.AutoSize = true;
             Regresar.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Regresar.Location = new Point(591, 376);
+            Regresar.Location = new Point(426, 442);
+            Regresar.Margin = new Padding(3, 4, 3, 4);
             Regresar.Name = "Regresar";
-            Regresar.Size = new Size(170, 40);
+            Regresar.Size = new Size(194, 53);
             Regresar.TabIndex = 6;
             Regresar.Text = "Regresar";
             Regresar.UseVisualStyleBackColor = true;
@@ -124,24 +128,25 @@ namespace BibliotecaGrafica
             tableLayoutPanel1.AutoSize = true;
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 466F));
-            tableLayoutPanel1.Location = new Point(209, 181);
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 533F));
+            tableLayoutPanel1.Location = new Point(63, 194);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 6;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel1.Size = new Size(709, 182);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.Size = new Size(675, 240);
             tableLayoutPanel1.TabIndex = 4;
             // 
             // Form_Eliminar
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1127, 399);
+            ClientSize = new Size(812, 507);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(Regresar);
             Controls.Add(Eliminar);
@@ -149,6 +154,7 @@ namespace BibliotecaGrafica
             Controls.Add(textBox1);
             Controls.Add(Id);
             Controls.Add(Titulo);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form_Eliminar";
             Text = "Form_Eliminar";
             Load += textBox1_TextChanged;

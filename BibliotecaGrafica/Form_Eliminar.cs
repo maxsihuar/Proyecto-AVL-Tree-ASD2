@@ -34,7 +34,7 @@ namespace BibliotecaGrafica
             arbolPrestamos = Anterior.arbolPrestamos;
 
             InitializeComponent();
-            Titulo.Text = $" {ObjetoSeleccionado.ToUpper()}";
+            Titulo.Text = $" {"ELIMINAR " + ObjetoSeleccionado.ToUpper()}";
             Titulo.Location = new Point((this.ClientSize.Width - Titulo.Size.Width) / 2, 40);
 
             texts.Add(textBox1);
@@ -266,6 +266,7 @@ namespace BibliotecaGrafica
         private void Eliminar_Click(object sender, EventArgs e)
         {
             string id = textBox1.Text;
+            
 
             if (string.IsNullOrWhiteSpace(id))
             {
@@ -277,22 +278,43 @@ namespace BibliotecaGrafica
             errorProvider1.SetError(textBox1, "");
             if (ObjetoSeleccionado == "Libro")
             {
+                List<string> ls = control.BuscarObjeto(arbolLibros, id);
                 List<string> resultado = control.EliminarObjeto(arbolLibros, id);
+                for (int i = 0; i < 5; i++)
+                {
+                    texts[i].Enabled = false;
+                    texts[i].Text = ls[i];
+                }
 
                 MessageBox.Show(resultado[0], resultado[1]);
             }
             if (ObjetoSeleccionado == "Lector")
             {
+                List<string> ls = control.BuscarObjeto(arbolLectores, id);
                 List<string> resultado = control.EliminarObjeto(arbolLectores, id);
+
+                for (int i = 0; i < 6; i++)
+                {
+                    texts[i].Enabled = false;
+                    texts[i].Text = ls[i];
+                }
 
                 MessageBox.Show(resultado[0], resultado[1]);
             }
             if (ObjetoSeleccionado == "Prestamo")
             {
+                List<string> ls = control.BuscarObjeto(arbolPrestamos, id);
                 List<string> resultado = control.EliminarObjeto(arbolPrestamos, id);
+
+                for (int i = 0; i < 5; i++)
+                {
+                    texts[i].Enabled = false;
+                    texts[i].Text = ls[i];
+                }
 
                 MessageBox.Show(resultado[0], resultado[1]);
             }
+            texts[0].Enabled = true;
         }
         private void Regresar_Click(object sender, EventArgs e)
         {
