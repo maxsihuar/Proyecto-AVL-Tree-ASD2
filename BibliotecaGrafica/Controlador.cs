@@ -22,6 +22,20 @@ namespace BibliotecaGrafica
             }
         }
 
+        public int ValidarEspecialidad(cArbolAVL arbol, string esp)
+        {
+            List<cObjeto> especialidades = arbol.InOrden();
+            foreach(cLibro l in especialidades)
+            {
+                if(l.Especialidad == esp)
+                {
+                    return 101;
+                }
+            }
+
+            return 102;
+        }
+
         public List<string> InsertarObjeto(cArbolAVL arbol, List<string> datos)
         {
             if(arbol.Tipo == "Libro")

@@ -17,6 +17,7 @@ namespace BibliotecaGrafica
         private int tm_TextBox = 400;
         private int tm_Label = 100;
         private Form2 form_Anterior;
+        private bool flag = true;
 
         public cArbolAVL arbolLibros { get; set; }
         public cArbolAVL arbolLectores { get; set; }
@@ -230,6 +231,7 @@ namespace BibliotecaGrafica
             if (!string.IsNullOrEmpty(errorProvider1.GetError(textBox1)))
             {
                 MessageBox.Show("Por favor, corrige los errores antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                flag = false;
             }
 
             if (ObjetoSeleccionado == "Libro")
@@ -237,24 +239,27 @@ namespace BibliotecaGrafica
                 if (control.ValidarId(arbolLibros, id) == 102)
                 {
                     errorProvider1.SetError(textBox1, "El Libro no existe");
+                    flag = false;
                 }
-                else { errorProvider1.SetError(textBox1, ""); }
+                else { errorProvider1.SetError(textBox1, ""); flag = true; }
             }
             if (ObjetoSeleccionado == "Lector")
             {
                 if (control.ValidarId(arbolLectores, id) == 102)
                 {
                     errorProvider1.SetError(textBox1, "El Lector no existe");
+                    flag |= false;
                 }
-                else { errorProvider1.SetError(textBox1, ""); }
+                else { errorProvider1.SetError(textBox1, ""); flag = true; }
             }
             if (ObjetoSeleccionado == "Prestamo")
             {
                 if (control.ValidarId(arbolPrestamos, id) == 102)
                 {
+                    flag = false;
                     errorProvider1.SetError(textBox1, "El Prestamo no existe");
                 }
-                else { errorProvider1.SetError(textBox1, ""); }
+                else { errorProvider1.SetError(textBox1, ""); flag = true; }
             }
         }
 
@@ -271,6 +276,7 @@ namespace BibliotecaGrafica
         {
             string id = textBox1.Text;
 
+            if (!flag) { return; }
             if (string.IsNullOrWhiteSpace(id))
             {
                 errorProvider1.SetError(textBox1, "Ingrese un ID");

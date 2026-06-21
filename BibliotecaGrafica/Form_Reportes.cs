@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BibliotecaGrafica
 {
@@ -47,7 +46,7 @@ namespace BibliotecaGrafica
                 ObjetoSeleccionado = "Lector";
             }
 
-                InitializeComponent();
+            InitializeComponent();
             lb_Titulo.Text = $"REPORTE DE {TipoOperacion.ToUpper()}";
             lb_Titulo.Location = new Point((this.ClientSize.Width - lb_Titulo.Size.Width) / 2, 40);
             Iniciar();
@@ -134,15 +133,22 @@ namespace BibliotecaGrafica
                 lb1.AutoSize = true; lb1.Font = new Font("Segoe UI", 12, FontStyle.Regular);
                 tableLayoutPanel1.Controls.Add(lb1);
 
+                ErrorProvider error = new ErrorProvider();
+                error.ContainerControl = this;
+
                 TextBox txtTitulo = new TextBox();
                 txtTitulo.Width = 400; txtTitulo.Height = 30;
+                txtTitulo.Validating += (sender,e) => textBox1_Validation(sender,e, txtTitulo, error);
                 tableLayoutPanel1.Controls.Add(txtTitulo);
+                
+
 
                 Button btn_Enviar = new Button();
                 btn_Enviar.Text = "Cargar";
                 btn_Enviar.Width = 100; btn_Enviar.Height = 50; btn_Enviar.Location = new Point(10, 10);
-                btn_Enviar.Click += (sender, e) => btn_EnviarP(sender, e, txtTitulo);
+                btn_Enviar.Click += (sender, e) => btn_EnviarP(sender, e, txtTitulo, error);
                 tableLayoutPanel1.Controls.Add(btn_Enviar);
+
 
             }
             if (TipoOperacion == "de Prestamos sin Devolución")
@@ -176,11 +182,31 @@ namespace BibliotecaGrafica
             }
 
         }
+        private void textBox1_Validation(object sender, CancelEventArgs e, TextBox textBox1,ErrorProvider  errorProvider1)
+        {
+            // 1. Condición de error: ¿Está vacío o tiene menos de 3 letras?
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                errorProvider1.SetError(textBox1, "Ingrese una especialidad");
+            }
+            else
+            {
+                // 2. Si el texto es válido, LIMPIAMOS el error para que desaparezca el icono
+                errorProvider1.SetError(textBox1, "");
+            }
+        }
 
-        private void btn_EnviarP(object sender, EventArgs e, TextBox txtTitulo)
+        private void btn_EnviarP(object sender, EventArgs e, TextBox txtTitulo, ErrorProvider error)
         {
             tabla.Rows.Clear();
             string especialidad = txtTitulo.Text;
+
+            if (control.ValidarEspecialidad(arbolLibros,especialidad) == 102)
+            {
+                error.SetError(txtTitulo, "La especialidad no existe");
+                return;
+            }
+
             List<List<string>> datos = control.ReporteListarPorEspecialidad(arbolLibros, especialidad);
             foreach (List<string> l in datos)
             {

@@ -15,6 +15,7 @@ namespace BibliotecaGrafica
     public partial class Form_Eliminar : Form
     {
         private List<TextBox> texts = new List<TextBox>();
+        private bool flag = true;
         private int tm_TextBox = 400;
         private int tm_Label = 100;
         private Form2 form_Anterior;
@@ -236,6 +237,7 @@ namespace BibliotecaGrafica
             if (!string.IsNullOrEmpty(errorProvider1.GetError(textBox1)))
             {
                 MessageBox.Show("Por favor, corrige los errores antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                flag = false;
             }
 
             if (ObjetoSeleccionado == "Libro")
@@ -243,24 +245,27 @@ namespace BibliotecaGrafica
                 if (control.ValidarId(arbolLibros, id) == 102)
                 {
                     errorProvider1.SetError(textBox1, "El Libro no existe");
+                    flag = false;
                 }
-                else { errorProvider1.SetError(textBox1, ""); }
+                else { errorProvider1.SetError(textBox1, ""); flag = true; }
             }
             if (ObjetoSeleccionado == "Lector")
             {
                 if (control.ValidarId(arbolLectores, id) == 102)
                 {
                     errorProvider1.SetError(textBox1, "El Lector no existe");
+                    flag |= false; ;
                 }
-                else { errorProvider1.SetError(textBox1, ""); }
+                else { errorProvider1.SetError(textBox1, ""); flag = true; }
             }
             if (ObjetoSeleccionado == "Prestamo")
             {
                 if (control.ValidarId(arbolPrestamos, id) == 102)
                 {
                     errorProvider1.SetError(textBox1, "El Prestamo no existe");
+                    flag = false;
                 }
-                else { errorProvider1.SetError(textBox1, ""); }
+                else { errorProvider1.SetError(textBox1, ""); flag = true;  }
             }
         }
         private void Eliminar_Click(object sender, EventArgs e)
@@ -274,6 +279,9 @@ namespace BibliotecaGrafica
                 MessageBox.Show("Por favor, ingrese un ID");
                 return;
             }
+
+            if(!flag) { return; }
+
 
             errorProvider1.SetError(textBox1, "");
             if (ObjetoSeleccionado == "Libro")
