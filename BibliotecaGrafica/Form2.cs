@@ -63,6 +63,16 @@ namespace BibliotecaGrafica
             formInsetarModificar.Show();
             this.Hide();
         }
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+           Form_Eliminar form_Eliminar = new Form_Eliminar(ObjetoSeleccionado, this);
+            form_Eliminar.FormClosed += (s, args) => Application.Exit();
+            form_Eliminar.StartPosition = FormStartPosition.Manual;
+            form_Eliminar.Location = this.Location;
+            form_Eliminar.Size = this.Size;
+            form_Eliminar.Show();
+            this.Hide();
+        }
 
         private void btn_Salir_Click(object sender, EventArgs e)
         {
@@ -73,5 +83,6 @@ namespace BibliotecaGrafica
             this.Hide();
         }
 
+        
     }
 }

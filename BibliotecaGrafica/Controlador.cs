@@ -105,21 +105,23 @@ namespace BibliotecaGrafica
             return ["Agregado Correctamente", "Exitoso"];
         }
 
-        public void EliminarObjeto(cArbolAVL arbol)
-        {
-            Console.Write("Ingrese el ID del objeto a eliminar: ");
-            string id = Console.ReadLine();
+        public List<string> EliminarObjeto(cArbolAVL arbol, string Id)
 
-            int resultado = ValidarId(arbol, id);
-            if (resultado == 101)
+        {
+            List<cObjeto> lista = arbol.InOrden();
+            cObjeto encontrado = lista.FirstOrDefault(o => o.Id == Id);
+
+            if (encontrado == null)
             {
-                arbol.Eliminar(id);
+                return ["Error al encontrar el elemento", "Error"];
             }
             else
             {
-                Console.WriteLine("ERROR : El objeto no existe");
+                arbol.Eliminar(Id);
+                return ["Eliminado Correctamente", "Exitoso"];
             }
         }
+        
 
         public List<string> BuscarObjeto(cArbolAVL arbol, string id)
         {
