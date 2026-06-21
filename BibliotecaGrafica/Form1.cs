@@ -65,7 +65,15 @@ namespace BibliotecaGrafica
 
         private void btn_Reportes_Click(object sender, EventArgs e)
         {
-           //Form_Reportes form_Reportes = new Form_Reportes();
+            Form3 form3 = new Form3(this, arbolLibros, arbolLectores, arbolPrestamos);
+            form3.FormClosed += (s, args) => Application.Exit();
+
+            form3.StartPosition = FormStartPosition.Manual;
+            form3.Location = this.Location;
+            form3.Size = this.Size;
+            form3.Show();
+            this.Hide();
+
         }
     }
 }

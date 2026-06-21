@@ -15,17 +15,19 @@ namespace BibliotecaGrafica
     {
         private Form1 form_Anterior;
 
-        public cArbolAVL arbolLibros;
-        public cArbolAVL arbolLectores;
-        public cArbolAVL arbolPrestamos;
+        public cArbolAVL arbolLibros { get; set; }
+        public cArbolAVL arbolLectores { get; set; }
+        public cArbolAVL arbolPrestamos { get; set; }
 
 
-        public Form3(cArbolAVL arbolLibros, cArbolAVL arbolLectores, cArbolAVL arbolPrestamos)
+        public Form3(Form1 form_Anterior, cArbolAVL arbolLibros, cArbolAVL arbolLectores, cArbolAVL arbolPrestamos)
         {
             InitializeComponent();
+            this.form_Anterior = form_Anterior;
             this.arbolLectores = arbolLectores;
             this.arbolPrestamos = arbolPrestamos;
             this.arbolLibros = arbolLibros;
+           
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)
@@ -40,16 +42,25 @@ namespace BibliotecaGrafica
         private void btn_Insetar_Click(object sender, EventArgs e)
         {
             Form_Reportes form = new Form_Reportes("por Especialidad", this);
+            form.FormClosed += (s, args) => Application.Exit();
+            form.Show();
+            this.Hide();
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
-
+            Form_Reportes form = new Form_Reportes("de Prestamos sin Devolución", this);
+            form.FormClosed += (s, args) => Application.Exit();
+            form.Show();
+            this.Hide();
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
-
+           Form_Reportes form = new Form_Reportes("de Lectores Con Libros Pendientes", this);
+            form.FormClosed += (s, args) => Application.Exit();
+            form.Show();
+            this.Hide();
         }
     }
 }
