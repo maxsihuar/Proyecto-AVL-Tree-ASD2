@@ -43,6 +43,7 @@ namespace BibliotecaGrafica
         {
             Form_Reportes form = new Form_Reportes("por Especialidad", this);
             form.FormClosed += (s, args) => Application.Exit();
+            form.Location = this.Location; form.Size = this.Size;
             form.Show();
             this.Hide();
         }
@@ -51,6 +52,7 @@ namespace BibliotecaGrafica
         {
             Form_Reportes form = new Form_Reportes("de Prestamos sin Devolución", this);
             form.FormClosed += (s, args) => Application.Exit();
+            form.Location = this.Location; form.Size = this.Size;
             form.Show();
             this.Hide();
         }
@@ -59,6 +61,7 @@ namespace BibliotecaGrafica
         {
            Form_Reportes form = new Form_Reportes("de Lectores Con Libros Pendientes", this);
             form.FormClosed += (s, args) => Application.Exit();
+            form.Location = this.Location; form.Size = this.Size;
             form.Show();
             this.Hide();
         }

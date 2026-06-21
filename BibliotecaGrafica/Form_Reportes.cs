@@ -140,7 +140,7 @@ namespace BibliotecaGrafica
 
                 Button btn_Enviar = new Button();
                 btn_Enviar.Text = "Cargar";
-                btn_Enviar.Width = 100; btn_Enviar.Height = 30; btn_Enviar.Location = new Point(10, 10);
+                btn_Enviar.Width = 100; btn_Enviar.Height = 50; btn_Enviar.Location = new Point(10, 10);
                 btn_Enviar.Click += (sender, e) => btn_EnviarP(sender, e, txtTitulo);
                 tableLayoutPanel1.Controls.Add(btn_Enviar);
 

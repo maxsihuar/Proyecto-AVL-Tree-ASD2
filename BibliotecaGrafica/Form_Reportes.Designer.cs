@@ -62,6 +62,7 @@
             // 
             // lb_Titulo
             // 
+            lb_Titulo.Anchor = AnchorStyles.None;
             lb_Titulo.AutoSize = true;
             lb_Titulo.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lb_Titulo.Location = new Point(320, 26);
@@ -77,11 +78,11 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 533F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 174F));
-            tableLayoutPanel1.Location = new Point(15, 100);
+            tableLayoutPanel1.Location = new Point(15, 91);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(770, 27);
+            tableLayoutPanel1.Size = new Size(770, 36);
             tableLayoutPanel1.TabIndex = 13;
             // 
             // Form_Reportes
