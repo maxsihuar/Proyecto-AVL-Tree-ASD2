@@ -47,11 +47,11 @@ namespace BibliotecaGrafica
             arbolLectores.Insertar(lector7);
 
             //Prestamos
-            cPrestamo prestamo1 = new cPrestamo { Id = "P001", IdLector = "U001", IdLibro = "L001", FechaPrestamo = "01/06/2026", FechaDevolucion = "15/07/2026" };
-            cPrestamo prestamo2 = new cPrestamo { Id = "P002", IdLector = "U002", IdLibro = "L003", FechaPrestamo = "02/06/2026", FechaDevolucion = "16/07/2026" };
-            cPrestamo prestamo3 = new cPrestamo { Id = "P003", IdLector = "U003", IdLibro = "L005", FechaPrestamo = "03/06/2026", FechaDevolucion = "17/07/2026" };
-            cPrestamo prestamo4 = new cPrestamo { Id = "P004", IdLector = "U004", IdLibro = "L002", FechaPrestamo = "04/06/2026", FechaDevolucion = "18/07/2026" };
-            cPrestamo prestamo5 = new cPrestamo { Id = "P005", IdLector = "U005", IdLibro = "L007", FechaPrestamo = "05/06/2026", FechaDevolucion = "19/07/2026" };
+            cPrestamo prestamo1 = new cPrestamo { Id = "P001", IdLector = "U001", IdLibro = "L001", FechaPrestamo = "01/06/2026", FechaDevolucion = "15/06/2026" };
+            cPrestamo prestamo2 = new cPrestamo { Id = "P002", IdLector = "U002", IdLibro = "L003", FechaPrestamo = "02/06/2026", FechaDevolucion = "16/06/2026" };
+            cPrestamo prestamo3 = new cPrestamo { Id = "P003", IdLector = "U003", IdLibro = "L005", FechaPrestamo = "03/06/2026", FechaDevolucion = "17/06/2026" };
+            cPrestamo prestamo4 = new cPrestamo { Id = "P004", IdLector = "U004", IdLibro = "L002", FechaPrestamo = "04/06/2026", FechaDevolucion = "18/06/2026" };
+            cPrestamo prestamo5 = new cPrestamo { Id = "P005", IdLector = "U005", IdLibro = "L007", FechaPrestamo = "05/06/2026", FechaDevolucion = "19/06/2026" };
             cPrestamo prestamo6 = new cPrestamo { Id = "P006", IdLector = "U006", IdLibro = "L004", FechaPrestamo = "06/06/2026", FechaDevolucion = "20/06/2026" };
             cPrestamo prestamo7 = new cPrestamo { Id = "P007", IdLector = "U007", IdLibro = "L006", FechaPrestamo = "07/06/2026", FechaDevolucion = "21/06/2026" };
             arbolPrestamos.Insertar(prestamo1);

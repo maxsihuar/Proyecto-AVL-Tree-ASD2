@@ -59,7 +59,7 @@ namespace BibliotecaGrafica
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
-           Form_Reportes form = new Form_Reportes("de Lectores Con Libros Pendientes", this);
+           Form_Reportes form = new Form_Reportes("de Lectores con Libros Pendientes", this);
             form.FormClosed += (s, args) => Application.Exit();
             form.Location = this.Location; form.Size = this.Size;
             form.Show();

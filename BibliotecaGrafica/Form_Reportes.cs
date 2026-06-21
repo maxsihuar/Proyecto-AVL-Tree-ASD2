@@ -38,7 +38,7 @@ namespace BibliotecaGrafica
             if(TipoOperacion == "por Especialidad")
             {
                 ObjetoSeleccionado = "Libro";
-            }else if(TipoOperacion == "de Prestamo sin Devolucion")
+            }else if(TipoOperacion == "de Prestamos sin Devolución")
             {
                 ObjetoSeleccionado = "Prestamo";
             }
@@ -145,7 +145,7 @@ namespace BibliotecaGrafica
                 tableLayoutPanel1.Controls.Add(btn_Enviar);
 
             }
-            if (TipoOperacion == "de Prestamo sin Devolucion")
+            if (TipoOperacion == "de Prestamos sin Devolución")
             {
                 List<List<string>> datos = control.ReporteListarPrestamosFechadeDev(arbolPrestamos);
                 foreach (List<string> l in datos)
@@ -159,7 +159,7 @@ namespace BibliotecaGrafica
                     tabla.Rows.Add(fila);
                 }
             }
-            if (ObjetoSeleccionado == "Prestamo")
+            if (TipoOperacion == "de Lectores con Libros Pendientes")
             {
                 List<List<string>> datos = control.ReporteListaPendientesdeDevolucion(arbolPrestamos, arbolLectores);
                 foreach (List<string> l in datos)

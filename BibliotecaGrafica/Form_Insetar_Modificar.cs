@@ -293,7 +293,6 @@ namespace BibliotecaGrafica
                     }
                     else
                     { 
-                        errorProvider1.SetError(textBox1, "");
                         List<string> l = control.BuscarObjeto(arbolLectores, id);
                         errorProvider1.SetError(textBox1, "");
                         for (int i = 0; i < 6; i++)

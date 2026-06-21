@@ -154,16 +154,13 @@ namespace Clases
         {
             if (nodo == null) return false;
 
-            int i = string.Compare(nodo.dato.Id, id);
+            int i = string.Compare(id, nodo.dato.Id);
 
             if (i==0)
             {
                 return true;
             }
-
-            
-
-            else if (i > 0)
+            else if (i < 0)
             {
                 return _Buscar(nodo.hijoIzquierdo, id);
             }

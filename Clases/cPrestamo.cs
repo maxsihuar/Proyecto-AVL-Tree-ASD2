@@ -54,6 +54,10 @@ namespace Clases
         }
         public bool FueraDePlazo()
         {
+            if(FechaDevolucion == null || FechaDevolucion.Trim() == "")
+            {
+                return false;
+            }
             DateTime fechadev = DateTime.Parse(FechaDevolucion);
             return DateTime.Today > fechadev;
         }
