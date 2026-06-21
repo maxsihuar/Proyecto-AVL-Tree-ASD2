@@ -152,46 +152,57 @@ namespace BibliotecaGrafica
 
         #region ************Reportes*****************
 
-        public void ReporteGeneral(cArbolAVL arbol)
+        public List<List<string>> ReporteGeneral(cArbolAVL arbol)
         {
             List<cObjeto> lista = arbol.InOrden();
+            List<List<string>> ListaF = new List<List<string>>();
 
             if (lista.Count() == 0)
             {
                 Console.WriteLine("No hay datos para mostrar");
-                return;
             }
 
             if (lista.FirstOrDefault() is cLibro)
             {
-                Console.WriteLine(new string('-', 112));
-
-                Console.WriteLine($"{"ID",-8} | {"Título",-35} | {"Autor",-25} | {"Año",-6} | {"Especialidad"}");
-
-                Console.WriteLine(new string('-', 112));
+                foreach(cLibro libro in lista)
+                {
+                    List<string> datos = new List<string>();
+                    datos.Add(libro.Id);
+                    datos.Add(libro.Titulo);
+                    datos.Add(libro.Autor);
+                    datos.Add(libro.Anio);
+                    datos.Add(libro.Especialidad);
+                    ListaF.Add(datos);
+                }
             }
             else if (lista.FirstOrDefault() is cPrestamo)
             {
-
-                Console.WriteLine(new string('-', 75));
-
-                Console.WriteLine($"{"ID Pres.",-8} | {"ID Lector",-10} |{"ID Libro",-10} | {"F. Préstamo",-12} | {"F. Devolución"}");
-
-                Console.WriteLine(new string('-', 75));
+                foreach (cPrestamo prestamo in lista)
+                {
+                    List<string> datos = new List<string>();
+                    datos.Add(prestamo.Id);
+                    datos.Add(prestamo.IdLector);
+                    datos.Add(prestamo.IdLibro);
+                    datos.Add(prestamo.FechaPrestamo);
+                    datos.Add(prestamo.FechaDevolucion);
+                    ListaF.Add(datos);
+                }
             }
             else
             {
-                Console.WriteLine(new string('-', 115));
-
-                Console.WriteLine($"{"ID",-8} | {"Ape. Paterno",-18} | {"Ape. Materno",-18} | {"Nombre",-20} | {"Condición",-12} | {"Email",-25}");
-
-                Console.WriteLine(new string('-', 115));
+                foreach (cLector lector in lista)
+                {
+                    List<string> datos = new List<string>();
+                    datos.Add(lector.Id);
+                    datos.Add(lector.AP);
+                    datos.Add(lector.AM);
+                    datos.Add(lector.Nombre);
+                    datos.Add(lector.Condicion);
+                    datos.Add(lector.Email);
+                    ListaF.Add(datos);
+                }
             }
-
-            foreach (cObjeto dato in lista)
-            {
-                dato.Mostrar();
-            }
+            return ListaF;
         }
 
         public void ReporteListarPorEspecialidad(cArbolAVL arbol)

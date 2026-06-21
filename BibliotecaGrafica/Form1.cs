@@ -8,7 +8,7 @@ namespace BibliotecaGrafica
         public cArbolAVL arbolLectores { get; set; }
         public cArbolAVL arbolPrestamos { get; set; }
 
-        public Form1(cArbolAVL arbolLibro ,cArbolAVL arbolLectore, cArbolAVL arbolPrestamo)
+        public Form1(cArbolAVL arbolLibro, cArbolAVL arbolLectore, cArbolAVL arbolPrestamo)
         {
             InitializeComponent();
             this.arbolLibros = arbolLibro;
@@ -61,6 +61,11 @@ namespace BibliotecaGrafica
 
             form2.Show();
             this.Hide();
+        }
+
+        private void btn_Reportes_Click(object sender, EventArgs e)
+        {
+            Form_Reportes form_Reportes = new Form_Reportes();
         }
     }
 }

@@ -32,6 +32,7 @@
             btn_Libro = new Button();
             btn_Prestamo = new Button();
             btn_Lector = new Button();
+            btn_Reportes = new Button();
             SuspendLayout();
             // 
             // label1
@@ -87,11 +88,25 @@
             btn_Lector.UseVisualStyleBackColor = true;
             btn_Lector.Click += btn_Lector_Click;
             // 
+            // btn_Reportes
+            // 
+            btn_Reportes.Anchor = AnchorStyles.None;
+            btn_Reportes.AutoSize = true;
+            btn_Reportes.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Reportes.Location = new Point(376, 380);
+            btn_Reportes.Name = "btn_Reportes";
+            btn_Reportes.Size = new Size(110, 40);
+            btn_Reportes.TabIndex = 4;
+            btn_Reportes.Text = "Reportes";
+            btn_Reportes.UseVisualStyleBackColor = true;
+            btn_Reportes.Click += btn_Reportes_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(862, 504);
+            Controls.Add(btn_Reportes);
             Controls.Add(btn_Lector);
             Controls.Add(btn_Prestamo);
             Controls.Add(btn_Libro);
@@ -110,5 +125,6 @@
         private Button btn_Libro;
         private Button btn_Prestamo;
         private Button btn_Lector;
+        private Button btn_Reportes;
     }
 }

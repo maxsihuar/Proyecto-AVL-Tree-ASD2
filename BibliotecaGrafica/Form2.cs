@@ -65,7 +65,7 @@ namespace BibliotecaGrafica
         }
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
-           Form_Eliminar form_Eliminar = new Form_Eliminar(ObjetoSeleccionado, this);
+            Form_Eliminar form_Eliminar = new Form_Eliminar(ObjetoSeleccionado, this);
             form_Eliminar.FormClosed += (s, args) => Application.Exit();
             form_Eliminar.StartPosition = FormStartPosition.Manual;
             form_Eliminar.Location = this.Location;
@@ -73,6 +73,18 @@ namespace BibliotecaGrafica
             form_Eliminar.Show();
             this.Hide();
         }
+
+        private void btn_Listar_Click(object sender, EventArgs e)
+        {
+            Form_Listar_Reportes form_Listar = new Form_Listar_Reportes(ObjetoSeleccionado, this);
+            form_Listar.FormClosed += (s, args) => Application.Exit();
+            form_Listar.StartPosition = FormStartPosition.Manual;
+            form_Listar.Location = this.Location;
+            form_Listar.Size =this.Size;
+            form_Listar.Show();
+            this.Hide();
+        }
+
 
         private void btn_Salir_Click(object sender, EventArgs e)
         {
@@ -82,7 +94,5 @@ namespace BibliotecaGrafica
             form_Anterior.Show();
             this.Hide();
         }
-
-        
     }
 }
