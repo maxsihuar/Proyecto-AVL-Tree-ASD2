@@ -24,13 +24,12 @@ namespace BibliotecaGrafica
 
         public List<string> InsertarObjeto(cArbolAVL arbol, List<string> datos)
         {
-            if(datos.Count() == 0)
-            {
-                return ["Error al cargar los datos", "Error"];
-            }
-
             if(arbol.Tipo == "Libro")
             {
+                if (datos.Count() < 4 || datos.Any(x => string.IsNullOrWhiteSpace(x)))
+                {
+                    return ["Verifique que todos los datos estén llenados", "Error"];
+                }
                 cLibro dato = new cLibro();
                 dato.Id = datos[0];
                 dato.Titulo = datos[1];
@@ -41,6 +40,10 @@ namespace BibliotecaGrafica
             }
             if (arbol.Tipo == "Lector")
             {
+                if (datos.Count() < 5 || datos.Any(x => string.IsNullOrWhiteSpace(x)))
+                {
+                    return ["Verifique que todos los datos estén llenados", "Error"];
+                }
                 cLector dato = new cLector();
                 dato.Id = datos[0];
                 dato.AP = datos[1];
@@ -52,12 +55,20 @@ namespace BibliotecaGrafica
             }
             if (arbol.Tipo == "Prestamo")
             {
+                
                 cPrestamo dato = new cPrestamo();
                 dato.Id = datos[0];
                 dato.IdLector = datos[1];
                 dato.IdLibro = datos[2];
                 dato.FechaPrestamo = datos[3];
                 dato.FechaDevolucion = datos[4];
+                if (datos.Count < 4 ||
+    string.IsNullOrWhiteSpace(datos[1]) ||
+    string.IsNullOrWhiteSpace(datos[2]) ||
+    string.IsNullOrWhiteSpace(datos[3]))
+                {
+                    return ["Celdas vacías no permitidas", "Error"];
+                }
                 arbol.Insertar(dato);
             }
 
@@ -66,12 +77,13 @@ namespace BibliotecaGrafica
 
         public List<string> ModificarObjeto(cArbolAVL arbol, List<string> datos)
         {
-            if (datos.Count() == 0)
-            {
-                return ["Error al cargar los datos", "Error"];
-            }
+        
 
             if (arbol.Tipo == "Libro")
+                if (datos.Count() < 4 || datos.Any(x => string.IsNullOrWhiteSpace(x)))
+                {
+                    return ["Verifique que todos los datos estén llenados", "Error"];
+                }
             {
                 cLibro dato = new cLibro();
                 dato.Id = datos[0];
@@ -79,10 +91,15 @@ namespace BibliotecaGrafica
                 dato.Autor = datos[2];
                 dato.Anio = datos[3];
                 dato.Especialidad = datos[4];
+                
                 arbol.Modificar(dato.Id,dato);
             }
             if (arbol.Tipo == "Lector")
             {
+                if (datos.Count() < 5 || datos.Any(x => string.IsNullOrWhiteSpace(x)))
+                {
+                    return ["Verifique que todos los datos estén llenados", "Error"];
+                }
                 cLector dato = new cLector();
                 dato.Id = datos[0];
                 dato.AP = datos[1];
@@ -100,6 +117,13 @@ namespace BibliotecaGrafica
                 dato.IdLibro = datos[2];
                 dato.FechaPrestamo = datos[3];
                 dato.FechaDevolucion = datos[4];
+                if (datos.Count < 4 ||
+    string.IsNullOrWhiteSpace(datos[1]) ||
+    string.IsNullOrWhiteSpace(datos[2]) ||
+    string.IsNullOrWhiteSpace(datos[3]))
+                {
+                    return ["Celdas vacías no permitidas", "Error"];
+                }
                 arbol.Modificar(dato.Id,dato);
             }
 

@@ -337,9 +337,10 @@ namespace BibliotecaGrafica
 
         }
 
-        private List<string> Datos = new List<string>();
+        
         private void btn_Subir_Click(object sender, EventArgs e)
         {
+            List<string> Datos = new List<string>();
             foreach(TextBox txt in texts)
             {
                Datos.Add(txt.Text);

@@ -55,7 +55,7 @@ namespace ArbolAVL
             cPrestamo prestamo4 = new cPrestamo { Id = "P004", IdLector = "U004", IdLibro = "L002", FechaPrestamo = "04/06/2026", FechaDevolucion = "18/06/2026" };
             cPrestamo prestamo5 = new cPrestamo { Id = "P005", IdLector = "U005", IdLibro = "L007", FechaPrestamo = "05/06/2026", FechaDevolucion = "19/06/2026" };
             cPrestamo prestamo6 = new cPrestamo { Id = "P006", IdLector = "U006", IdLibro = "L004", FechaPrestamo = "06/06/2026", FechaDevolucion = "20/06/2026" };
-            cPrestamo prestamo7 = new cPrestamo { Id = "P007", IdLector = "U007", IdLibro = "L006", FechaPrestamo = "07/06/2026", FechaDevolucion = "21/06/2026" };
+            cPrestamo prestamo7 = new cPrestamo { Id = "P007", IdLector = "U007", IdLibro = "L006", FechaPrestamo = "07/06/2027", FechaDevolucion = "21/06/2026" };
             arbolPrestamos.Insertar(prestamo1);
             arbolPrestamos.Insertar(prestamo2);
             arbolPrestamos.Insertar(prestamo3);
