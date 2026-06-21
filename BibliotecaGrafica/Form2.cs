@@ -65,7 +65,7 @@ namespace BibliotecaGrafica
         }
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
-           Form_Eliminar form_Eliminar = new Form_Eliminar(ObjetoSeleccionado, this);
+            Form_Eliminar form_Eliminar = new Form_Eliminar(ObjetoSeleccionado, this);
             form_Eliminar.FormClosed += (s, args) => Application.Exit();
             form_Eliminar.StartPosition = FormStartPosition.Manual;
             form_Eliminar.Location = this.Location;
@@ -73,7 +73,16 @@ namespace BibliotecaGrafica
             form_Eliminar.Show();
             this.Hide();
         }
-
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            Form_Buscar form_Buscar = new Form_Buscar(ObjetoSeleccionado, this);
+            form_Buscar.FormClosed += (s, args) => Application.Exit();
+            form_Buscar.StartPosition = FormStartPosition.Manual;
+            form_Buscar.Location = this.Location;
+            form_Buscar.Size = this.Size;
+            form_Buscar.Show();
+            this.Hide();
+        }
         private void btn_Salir_Click(object sender, EventArgs e)
         {
             form_Anterior.StartPosition = FormStartPosition.Manual;

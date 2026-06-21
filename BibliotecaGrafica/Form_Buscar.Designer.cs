@@ -99,6 +99,7 @@
             Buscar.TabIndex = 5;
             Buscar.Text = "Buscar";
             Buscar.UseVisualStyleBackColor = true;
+            Buscar.Click += Buscar_Click;
             // 
             // Regresar
             // 
@@ -111,6 +112,7 @@
             Regresar.TabIndex = 6;
             Regresar.Text = "Regresar";
             Regresar.UseVisualStyleBackColor = true;
+            Regresar.Click += Regresar_Click;
             // 
             // tableLayoutPanel1
             // 
